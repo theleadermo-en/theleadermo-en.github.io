@@ -4238,7 +4238,7 @@
         .auth-hint a:hover { text-decoration:underline; }
 
         /* ===== Shared dashboard card shell ===== */
-        .dash-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.78); backdrop-filter:blur(10px); align-items:center; justify-content:center; padding:1rem; }
+        .dash-overlay { display:none; position:fixed; inset:0; z-index:10050; background:rgba(0,0,0,0.78); backdrop-filter:blur(10px); align-items:center; justify-content:center; padding:1rem; }
         .dash-card { background: linear-gradient(160deg, rgba(26,0,64,0.97), rgba(42,0,96,0.97)); border:1px solid rgba(199,125,255,0.3);
             border-radius:24px; width:100%; max-height:92vh; overflow-y:auto; position:relative;
             box-shadow: 0 0 0 1px rgba(199,125,255,0.08), 0 25px 70px rgba(0,0,0,0.55), 0 0 90px rgba(123,44,191,0.25);
@@ -4296,43 +4296,88 @@
         .logout-btn:hover { background:rgba(255,80,80,0.18); }
 
         /* ===== Leader Admin Dashboard ===== */
-        .admin-header { padding:1.6rem 1.8rem 0; }
-        .admin-title { font-size:1.35rem; font-weight:900; background:linear-gradient(135deg,#C77DFF,#EA6113); -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:1rem; }
-        .admin-stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem; margin-bottom:1.1rem; }
-        .admin-stat { background:rgba(255,255,255,0.05); border:1px solid rgba(199,125,255,0.2); border-radius:14px; padding:.8rem; text-align:center; }
-        .admin-stat-num { font-size:1.3rem; font-weight:900; color:#EA6113; }
-        .admin-stat-label { font-size:.72rem; color:#a9a3c2; margin-top:.1rem; }
-        .admin-search-row { display:flex; gap:.6rem; margin-bottom:.8rem; }
-        .admin-search { flex:1; background:rgba(255,255,255,0.05); border:1.5px solid rgba(199,125,255,0.2); border-radius:12px;
-            padding:.65rem 1rem; color:#F3F4F6; font-family:inherit; font-size:.86rem; outline:none; transition:border-color .2s; }
-        .admin-search:focus { border-color:rgba(199,125,255,0.7); }
-        .admin-filter-tabs { display:flex; gap:.4rem; margin-bottom:.9rem; background:rgba(255,255,255,0.04); border-radius:11px; padding:.25rem; }
-        .admin-filter-tab { flex:1; border:none; background:transparent; color:#a9a3c2; font-family:inherit; font-weight:700; font-size:.78rem;
-            padding:.5rem; border-radius:8px; cursor:pointer; transition: all .2s; }
-        .admin-filter-tab.active { background:linear-gradient(135deg,#7B2CBF,#EA6113); color:#fff; }
-        .admin-body { padding:0 1.8rem 1.8rem; }
-        .admin-count-txt { color:#a9a3c2; font-size:.8rem; margin-bottom:.7rem; }
-        .student-card { background:rgba(255,255,255,0.05); border:1px solid rgba(199,125,255,0.2); border-radius:16px; padding:.9rem;
-            transition: border-color .2s; }
-        .student-card:hover { border-color:rgba(199,125,255,0.45); }
-        .student-top { display:flex; gap:.7rem; align-items:flex-start; }
-        .student-avatar { width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,#7B2CBF,#EA6113); flex-shrink:0;
-            display:flex; align-items:center; justify-content:center; font-weight:900; color:#fff; font-size:1rem; }
-        .student-name { font-weight:800; color:#F3F4F6; font-size:.95rem; display:flex; align-items:center; gap:.35rem; }
-        .student-meta { font-size:.74rem; color:#a9a3c2; margin-top:.15rem; }
-        .student-level-chip { font-size:.68rem; font-weight:800; color:#C77DFF; background:rgba(199,125,255,0.12); border-radius:10px;
-            padding:.15rem .5rem; display:inline-block; margin-top:.3rem; }
-        .points-ring { text-align:center; background:rgba(199,125,255,0.12); border-radius:12px; padding:.4rem .8rem; flex-shrink:0; }
-        .points-ring-num { font-weight:900; color:#EA6113; font-size:1.15rem; }
-        .points-ring-lbl { font-size:.65rem; color:#a9a3c2; }
-        .student-actions { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.7rem; }
-        .act-btn { border-radius:8px; padding:.4rem .7rem; font-size:.76rem; cursor:pointer; font-family:inherit; font-weight:700; border:none;
-            transition: transform .15s; }
-        .act-btn:hover { transform: translateY(-1px); }
-        .act-btn.pts { background:rgba(123,44,191,0.25); border:1px solid rgba(199,125,255,0.35); color:#E0AAFF; }
-        .act-btn.custom { background:rgba(255,255,255,0.07); border:1px solid rgba(199,125,255,0.25); color:#a9a3c2; }
-        .act-btn.reward { background:rgba(234,97,19,0.2); border:1px solid rgba(234,97,19,0.4); color:#ffb37a; }
+        #leaderAdminOverlay { --ld-line: rgba(199,125,255,0.2); --ld-mute:#a9a3c2; }
+        .ld-card { max-width:860px; }
+        .ld-bar { position:sticky; top:0; z-index:4; display:flex; align-items:center; gap:.6rem; padding:.9rem 1.4rem;
+            background:rgba(21,0,51,0.96); backdrop-filter:blur(8px); border-bottom:1px solid var(--ld-line); }
+        .ld-bar > div:first-child { margin-left:auto; min-width:0; }
+        .ld-bar h2 { font-size:1.15rem; font-weight:800; color:#fff; line-height:1.3; }
+        .ld-me { font-size:.74rem; color:var(--ld-mute); text-align:right; overflow:hidden; text-overflow:ellipsis; }
+        .ld-btn { border:1px solid var(--ld-line); background:rgba(255,255,255,0.05); color:#E0AAFF; border-radius:9px; padding:.45rem .8rem;
+            font-family:inherit; font-weight:700; font-size:.78rem; cursor:pointer; white-space:nowrap; transition:background .15s, border-color .15s; }
+        .ld-btn:hover { background:rgba(199,125,255,0.16); border-color:rgba(199,125,255,0.5); }
+        .ld-btn.ld-primary { background:#7B2CBF; border-color:#7B2CBF; color:#fff; }
+        .ld-btn.ld-primary:hover { background:#8f3fd6; }
+        .ld-x { width:34px; height:34px; padding:0; border-radius:50%; }
+        .ld-btn:focus-visible, .ld-input:focus-visible, .ld-search:focus-visible, .ld-main:focus-visible { outline:2px solid #C77DFF; outline-offset:2px; }
+
+        .ld-stats { display:grid; grid-template-columns:repeat(4,1fr); margin:1.2rem 1.4rem; border:1px solid var(--ld-line); border-radius:14px; }
+        .ld-stat { padding:.9rem 1rem; }
+        .ld-stat + .ld-stat { border-right:1px solid var(--ld-line); }
+        .ld-stat b { display:block; font-size:1.5rem; font-weight:800; color:#fff; font-variant-numeric:tabular-nums; line-height:1.2; }
+        .ld-stat b.pts { color:#EA6113; }
+        .ld-stat span { font-size:.74rem; color:var(--ld-mute); }
+
+        .ld-tools { display:flex; gap:.6rem; flex-wrap:wrap; padding:0 1.4rem .9rem; }
+        .ld-search { flex:1 1 220px; min-width:0; background:rgba(255,255,255,0.05); border:1px solid var(--ld-line); border-radius:10px;
+            padding:.6rem .9rem; color:#F3F4F6; font-family:inherit; font-size:.86rem; }
+        .ld-seg { display:flex; border:1px solid var(--ld-line); border-radius:10px; overflow:hidden; }
+        .ld-seg button { border:0; background:transparent; color:var(--ld-mute); font-family:inherit; font-weight:700; font-size:.78rem; padding:.55rem .9rem; cursor:pointer; }
+        .ld-seg button + button { border-right:1px solid var(--ld-line); }
+        .ld-seg button.on { background:rgba(199,125,255,0.2); color:#fff; }
+        .ld-count { padding:0 1.4rem .6rem; font-size:.8rem; color:var(--ld-mute); }
+        .ld-list { padding:0 1.4rem 1.6rem; }
+
+        .ld-item { border:1px solid var(--ld-line); border-radius:12px; margin-bottom:.5rem; background:rgba(255,255,255,0.03); overflow:hidden; }
+        .ld-item.open { border-color:rgba(199,125,255,0.55); background:rgba(255,255,255,0.055); }
+        .ld-row { display:flex; align-items:center; }
+        .ld-main { flex:1; min-width:0; display:flex; align-items:center; gap:.8rem; padding:.75rem .9rem; background:none; border:0; color:inherit;
+            font:inherit; text-align:right; cursor:pointer; }
+        .ld-rank { width:1.5rem; flex-shrink:0; text-align:center; font-weight:800; font-size:.85rem; color:var(--ld-mute); font-variant-numeric:tabular-nums; }
+        .ld-avatar { width:38px; height:38px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+            background:rgba(199,125,255,0.18); color:#E0AAFF; font-weight:800; }
+        .ld-info { flex:1; min-width:0; }
+        .ld-name { display:block; font-weight:700; color:#fff; font-size:.93rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .ld-tag { font-style:normal; font-size:.66rem; font-weight:800; color:#ffb37a; border:1px solid rgba(234,97,19,0.5); border-radius:6px; padding:0 .35rem; margin-right:.4rem; }
+        .ld-mail { display:block; direction:ltr; text-align:right; font-size:.74rem; color:var(--ld-mute); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .ld-lvl { display:flex; align-items:center; gap:.5rem; margin-top:.35rem; font-size:.7rem; color:#c9bde3; }
+        .ld-lvl-bar { flex:0 0 84px; height:4px; border-radius:2px; background:rgba(255,255,255,0.12); overflow:hidden; }
+        .ld-lvl-bar i { display:block; height:100%; background:#C77DFF; }
+        .ld-pts { min-width:3.6rem; text-align:center; flex-shrink:0; }
+        .ld-pts b { display:block; font-size:1.25rem; font-weight:800; color:#EA6113; font-variant-numeric:tabular-nums; line-height:1.1; }
+        .ld-pts small { font-size:.66rem; color:var(--ld-mute); }
+        .ld-quick { margin-left:.8rem; }
+
+        .ld-detail { display:none; padding:.9rem 1rem 1rem; border-top:1px dashed var(--ld-line); }
+        .ld-item.open .ld-detail { display:block; animation:ldOpen .18s ease-out; }
+        @keyframes ldOpen { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:none; } }
+        .ld-facts { display:flex; flex-wrap:wrap; gap:.4rem 1.4rem; font-size:.78rem; color:var(--ld-mute); margin-bottom:.8rem; }
+        .ld-facts b { color:#fff; margin-right:.3rem; font-variant-numeric:tabular-nums; }
+        .ld-ctl { display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:.55rem; }
+        .ld-input { flex:1 1 170px; min-width:0; background:rgba(255,255,255,0.06); border:1px solid var(--ld-line); border-radius:9px;
+            padding:.45rem .7rem; color:#F3F4F6; font-family:inherit; font-size:.82rem; }
+        .ld-rewards { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.4rem; }
+        .ld-muted { font-size:.78rem; color:var(--ld-mute); }
+        .ld-empty { text-align:center; color:var(--ld-mute); padding:2rem 1rem; font-size:.9rem; }
+        .ld-toast { position:fixed; bottom:1.4rem; left:50%; transform:translate(-50%,20px); opacity:0; pointer-events:none; z-index:10060;
+            padding:.6rem 1.1rem; border-radius:10px; font-size:.85rem; font-weight:700; background:#1f0a3d; border:1px solid var(--ld-line); color:#fff;
+            transition:opacity .2s, transform .2s; max-width:90vw; }
+        .ld-toast.show { opacity:1; transform:translate(-50%,0); }
+        .ld-toast.ok { border-color:rgba(74,222,128,0.6); }
+        .ld-toast.err { border-color:rgba(255,120,120,0.7); color:#ffb3b3; }
+        .nav-admin a { color:#ffb37a; }
+        .footer-links a.footer-admin-link { display:inline-flex; align-self:flex-start; align-items:center; gap:.4rem; margin-top:.4rem; padding:.35rem .8rem;
+            border:1px solid rgba(234,97,19,0.55); border-radius:9px; color:#ffb37a; font-weight:700; }
+        .footer-links a.footer-admin-link::before { display:none; }
+        @media (max-width:560px) {
+            .ld-stats { grid-template-columns:repeat(2,1fr); }
+            .ld-stat:nth-child(3) { border-right:0; }
+            .ld-stat:nth-child(n+3) { border-top:1px solid var(--ld-line); }
+            .ld-bar { padding:.8rem 1rem; } .ld-bar .ld-videos-btn { padding:.4rem .6rem; }
+            .ld-stats, .ld-tools, .ld-count, .ld-list { margin-left:1rem; margin-right:1rem; padding-left:0; padding-right:0; }
+            .ld-lvl-bar { flex-basis:56px; }
+        }
+        @media (prefers-reduced-motion:reduce) { .ld-item.open .ld-detail, .ld-toast { animation:none; transition:none; } }
     </style>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -4435,6 +4480,10 @@
             <li><a href="#contact">
                 <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
                 التواصل
+            </a></li>
+            <li id="navAdminItem" class="nav-admin js-admin-only" style="display:none"><a href="#" onclick="openLeaderAdmin(); return false;">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></span>
+                لوحة التحكم
             </a></li>
         </ul>
     </nav>
@@ -5155,6 +5204,7 @@
                     <a href="#contact" data-fkey="register">سجل الآن</a>
                     <a href="#contact" data-fkey="contact">تواصل معنا</a>
                     <a href="#" id="devTeamLink" data-fkey="dev">معلومات عن المطور</a>
+                    <a href="#" id="footerAdminLink" class="footer-admin-link js-admin-only" style="display:none" onclick="openLeaderAdmin(); return false;">🔐 لوحة التحكم</a>
                 </div>
             </div>
 
@@ -5336,44 +5386,35 @@
         </div>
     </div>
 
-    <!-- ===== LEADER ADMIN DASHBOARD (students) ===== -->
-    <div id="leaderAdminOverlay" class="dash-overlay">
-        <div class="dash-card" style="max-width:800px;">
-            <button class="dash-close" onclick="closeLeaderAdmin()">✕</button>
-
-            <!-- Password gate -->
-            <div id="adminPassGate" style="max-width:360px;margin:2.5rem auto;padding:0 1.5rem;">
-                <div style="text-align:center;font-size:2rem;margin-bottom:.5rem;">🔐</div>
-                <div style="text-align:center;font-size:1.3rem;font-weight:900;color:#E0AAFF;margin-bottom:1.2rem;">لوحة تحكم الليدر</div>
-                <input id="adminGatePassword" type="password" class="admin-search" placeholder="كلمة المرور" dir="ltr" style="width:100%;box-sizing:border-box;margin-bottom:.8rem;">
-                <div id="adminGateError" style="display:none;color:#ff9b9b;font-size:.82rem;text-align:center;margin-bottom:.7rem;background:rgba(255,80,80,0.1);border:1px solid rgba(255,80,80,0.3);border-radius:10px;padding:.5rem;">كلمة المرور غلط</div>
-                <button onclick="checkAdminGatePassword()" class="auth-submit" style="margin-bottom:0;">دخول</button>
-            </div>
-
-            <!-- Main dashboard -->
-            <div id="adminMainView" style="display:none;">
-                <div class="admin-header">
-                    <div class="admin-title">🔐 لوحة تحكم الليدر — الطلاب</div>
-                    <div class="admin-stats-row">
-                        <div class="admin-stat"><div class="admin-stat-num" id="adminStatTotal">0</div><div class="admin-stat-label">إجمالي الطلاب</div></div>
-                        <div class="admin-stat"><div class="admin-stat-num" id="adminStatPoints">0</div><div class="admin-stat-label">إجمالي النقاط</div></div>
-                        <div class="admin-stat"><div class="admin-stat-num" id="adminStatToday">0</div><div class="admin-stat-label">تسجيل اليوم</div></div>
-                    </div>
-                    <div class="admin-search-row">
-                        <input id="adminStudentSearch" oninput="renderLeaderStudents()" class="admin-search" placeholder="🔍 دور على طالب بالاسم أو الإيميل">
-                    </div>
-                    <div class="admin-filter-tabs">
-                        <button class="admin-filter-tab active" id="adminFilterPoints" onclick="setAdminFilter('points')">⭐ الأعلى نقاط</button>
-                        <button class="admin-filter-tab" id="adminFilterNewest" onclick="setAdminFilter('newest')">🆕 الأحدث</button>
-                        <button class="admin-filter-tab" id="adminFilterName" onclick="setAdminFilter('name')">🔤 الاسم</button>
-                    </div>
+    <!-- ===== LEADER ADMIN DASHBOARD ===== -->
+    <div id="leaderAdminOverlay" class="dash-overlay" role="dialog" aria-modal="true" aria-label="لوحة التحكم">
+        <div class="dash-card ld-card">
+            <div class="ld-bar">
+                <div>
+                    <h2>لوحة التحكم</h2>
+                    <div class="ld-me" id="ldWho" dir="ltr"></div>
                 </div>
-                <div class="admin-body">
-                    <div id="adminStudentCount" class="admin-count-txt">جاري التحميل...</div>
-                    <div id="adminStudentsList" style="display:flex;flex-direction:column;gap:.7rem;"></div>
+                <button class="ld-btn ld-videos-btn" onclick="closeLeaderAdmin(); openAdminPanel();">إدارة الفيديوهات</button>
+                <button class="ld-btn ld-x" onclick="closeLeaderAdmin()" aria-label="إغلاق">✕</button>
+            </div>
+            <div class="ld-stats">
+                <div class="ld-stat"><b id="adminStatTotal">0</b><span>إجمالي الطلاب</span></div>
+                <div class="ld-stat"><b id="adminStatPoints" class="pts">0</b><span>إجمالي النقاط</span></div>
+                <div class="ld-stat"><b id="adminStatAvg">0</b><span>متوسط النقاط للطالب</span></div>
+                <div class="ld-stat"><b id="adminStatToday">0</b><span>سجّلوا النهارده</span></div>
+            </div>
+            <div class="ld-tools">
+                <input id="adminStudentSearch" oninput="renderLeaderStudents()" class="ld-search" placeholder="ابحث بالاسم أو الإيميل" aria-label="بحث عن طالب">
+                <div class="ld-seg">
+                    <button class="on" id="adminFilterPoints" onclick="setAdminFilter('points')">الأعلى نقاطاً</button>
+                    <button id="adminFilterNewest" onclick="setAdminFilter('newest')">الأحدث</button>
+                    <button id="adminFilterName" onclick="setAdminFilter('name')">الاسم</button>
                 </div>
             </div>
+            <div id="adminStudentCount" class="ld-count">جاري التحميل...</div>
+            <div id="adminStudentsList" class="ld-list"></div>
         </div>
+        <div id="ldToast" class="ld-toast" role="status"></div>
     </div>
 
     <!-- ===== FULLSCREEN VIDEO PLAYER ===== -->
@@ -7117,6 +7158,7 @@
             let currentAdminTab = 'preparatory';
 
             window.openAdminPanel = function() {
+                if (!window.isLeaderAdmin) return;
                 const overlay = document.getElementById('adminOverlay');
                 overlay.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
@@ -9277,8 +9319,6 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        const ADMIN_EMAIL = 'opaidamazed@gmail.com';
-        const ADMIN_PASSWORD = 'leader-mo26.27';
 
         let currentUser = null;
         let currentProfile = null;
@@ -9287,8 +9327,25 @@
         let studentsUnsub = null;
         let profileUnsub = null;
 
-        function isAdminEmail(email) {
-            return (email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
+        // ── Admin access: emails are stored in Firestore (admins/{email}), never in the code ──
+        let isAdminUser = false;
+        async function checkAdminStatus(user) {
+            isAdminUser = false;
+            try {
+                if (user && user.email) {
+                    const snap = await db.collection('admins').doc(user.email.toLowerCase()).get();
+                    isAdminUser = snap.exists;
+                }
+            } catch (e) { isAdminUser = false; }
+            window.isLeaderAdmin = isAdminUser;
+            applyAdminUI();
+        }
+        function applyAdminUI() {
+            document.querySelectorAll('.js-admin-only').forEach(el => { el.style.display = isAdminUser ? '' : 'none'; });
+            const wrap = document.getElementById('maAdminBtnWrap');
+            if (wrap) wrap.style.display = isAdminUser ? 'block' : 'none';
+            const ov = document.getElementById('leaderAdminOverlay');
+            if (!isAdminUser && ov && ov.style.display === 'flex') window.closeLeaderAdmin();
         }
 
         // ── Requires login before proceeding with a protected action ──────────────
@@ -9441,7 +9498,7 @@
                 await ref.set({
                     name: name || user.displayName || 'طالب',
                     email: user.email,
-                    role: isAdminEmail(user.email) ? 'admin' : 'student',
+                    role: 'student',
                     points: 0,
                     rewards: [],
                     levelTests: 0,
@@ -9483,6 +9540,7 @@
             currentUser = user;
             const label = document.getElementById('navAccountLabel');
             if (user) {
+                await checkAdminStatus(user);
                 await ensureStudentDoc(user, user.displayName || '');
                 if (label) label.textContent = (user.displayName || 'حسابي').split(' ')[0];
                 if (pendingAction) {
@@ -9493,6 +9551,7 @@
             } else {
                 if (label) label.textContent = 'حسابي';
                 currentProfile = null;
+                isAdminUser = false; window.isLeaderAdmin = false; applyAdminUI();
             }
             updateSectionGates();
         });
@@ -9515,7 +9574,7 @@
             document.getElementById('maName').textContent = currentUser.displayName || 'طالب';
             document.getElementById('maEmail').textContent = currentUser.email || '';
             document.getElementById('maAvatar').textContent = (currentUser.displayName || currentUser.email || '?').trim().charAt(0).toUpperCase();
-            const isAdmin = isAdminEmail(currentUser.email);
+            const isAdmin = isAdminUser;
             document.getElementById('maAdminBtnWrap').style.display = isAdmin ? 'block' : 'none';
             document.getElementById('maRoleBadge').style.display = isAdmin ? 'inline-flex' : 'none';
 
@@ -9564,38 +9623,26 @@
 
         // ── Leader Admin Dashboard (students management) ───────────────────────
         window.openLeaderAdmin = function() {
+            if (!isAdminUser) return;
             document.getElementById('leaderAdminOverlay').style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            const isAdmin = currentUser && isAdminEmail(currentUser.email);
-            if (isAdmin) {
-                document.getElementById('adminPassGate').style.display = 'none';
-                document.getElementById('adminMainView').style.display = 'block';
-                startStudentsListener();
-            } else {
-                document.getElementById('adminPassGate').style.display = 'block';
-                document.getElementById('adminMainView').style.display = 'none';
-                document.getElementById('adminGatePassword').value = '';
-                document.getElementById('adminGateError').style.display = 'none';
-            }
+            document.getElementById('ldWho').textContent = currentUser ? currentUser.email : '';
+            startStudentsListener();
         };
         window.closeLeaderAdmin = function() {
             document.getElementById('leaderAdminOverlay').style.display = 'none';
             document.body.style.overflow = '';
             if (studentsUnsub) { studentsUnsub(); studentsUnsub = null; }
         };
-        window.checkAdminGatePassword = function() {
-            const val = (document.getElementById('adminGatePassword').value || '').trim().toLowerCase();
-            if (val === ADMIN_PASSWORD.toLowerCase()) {
-                document.getElementById('adminPassGate').style.display = 'none';
-                document.getElementById('adminMainView').style.display = 'block';
-                startStudentsListener();
-            } else {
-                document.getElementById('adminGateError').style.display = 'block';
-            }
-        };
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('leaderAdminOverlay').style.display === 'flex') window.closeLeaderAdmin();
+        });
 
         let allStudents = [];
         let adminFilterMode = 'points';
+        let openStudentId = null;
+        const fmt = n => (n || 0).toLocaleString('en-US');
+
         function startStudentsListener() {
             if (studentsUnsub) studentsUnsub();
             document.getElementById('adminStudentCount').textContent = 'جاري التحميل...';
@@ -9603,106 +9650,132 @@
                 allStudents = [];
                 qs.forEach(doc => allStudents.push({ id: doc.id, ...doc.data() }));
                 renderAdminStats();
+                const ae = document.activeElement;
+                if (ae && ae.classList && ae.classList.contains('ld-input')) return; // don't wipe what the admin is typing
                 renderLeaderStudents();
             }, function() {
-                document.getElementById('adminStudentCount').textContent = 'تعذر تحميل بيانات الطلاب';
+                document.getElementById('adminStudentCount').textContent = 'تعذر تحميل بيانات الطلاب — راجع قواعد Firestore';
             });
         }
 
         function renderAdminStats() {
-            document.getElementById('adminStatTotal').textContent = allStudents.length;
+            const total = allStudents.length;
             const totalPoints = allStudents.reduce((sum, s) => sum + (s.points || 0), 0);
-            document.getElementById('adminStatPoints').textContent = totalPoints;
             const now = new Date();
             const todayCount = allStudents.filter(s => {
                 if (!s.createdAt || !s.createdAt.toDate) return false;
                 const d = s.createdAt.toDate();
                 return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() === now.getDate();
             }).length;
-            document.getElementById('adminStatToday').textContent = todayCount;
+            document.getElementById('adminStatTotal').textContent = fmt(total);
+            document.getElementById('adminStatPoints').textContent = fmt(totalPoints);
+            document.getElementById('adminStatAvg').textContent = fmt(total ? Math.round(totalPoints / total) : 0);
+            document.getElementById('adminStatToday').textContent = fmt(todayCount);
         }
 
         window.setAdminFilter = function(mode) {
             adminFilterMode = mode;
             ['Points', 'Newest', 'Name'].forEach(m => {
-                document.getElementById('adminFilter' + m).classList.toggle('active', m.toLowerCase() === mode);
+                document.getElementById('adminFilter' + m).classList.toggle('on', m.toLowerCase() === mode);
             });
+            renderLeaderStudents();
+        };
+        window.toggleStudentRow = function(id) {
+            openStudentId = (openStudentId === id) ? null : id;
             renderLeaderStudents();
         };
 
         window.renderLeaderStudents = function() {
             const q = (document.getElementById('adminStudentSearch').value || '').trim().toLowerCase();
             let filtered = allStudents.filter(s => !q || (s.name || '').toLowerCase().includes(q) || (s.email || '').toLowerCase().includes(q));
+            const ms = x => (x.createdAt && x.createdAt.toMillis ? x.createdAt.toMillis() : 0);
+            if (adminFilterMode === 'newest') filtered.sort((a, b) => ms(b) - ms(a));
+            else if (adminFilterMode === 'name') filtered.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'ar'));
+            else filtered.sort((a, b) => (b.points || 0) - (a.points || 0));
 
-            if (adminFilterMode === 'newest') {
-                filtered = filtered.slice().sort((a, b) => {
-                    const ta = a.createdAt && a.createdAt.toMillis ? a.createdAt.toMillis() : 0;
-                    const tb = b.createdAt && b.createdAt.toMillis ? b.createdAt.toMillis() : 0;
-                    return tb - ta;
-                });
-            } else if (adminFilterMode === 'name') {
-                filtered = filtered.slice().sort((a, b) => (a.name || '').localeCompare(b.name || '', 'ar'));
-            } else {
-                filtered = filtered.slice().sort((a, b) => (b.points || 0) - (a.points || 0));
-            }
+            const rankOf = {};
+            allStudents.slice().sort((a, b) => (b.points || 0) - (a.points || 0)).forEach((s, i) => { rankOf[s.id] = i + 1; });
 
-            document.getElementById('adminStudentCount').textContent = `عدد الطلاب: ${allStudents.length}` + (q ? ` — نتائج البحث: ${filtered.length}` : '');
+            document.getElementById('adminStudentCount').textContent = q ? `${filtered.length} نتيجة من ${allStudents.length} طالب` : `${allStudents.length} طالب`;
             const list = document.getElementById('adminStudentsList');
             if (!filtered.length) {
-                list.innerHTML = '<div style="color:#a9a3c2;font-size:.9rem;text-align:center;padding:1.5rem;">لا يوجد طلاب</div>';
+                list.innerHTML = `<div class="ld-empty">${allStudents.length ? 'مفيش طالب مطابق للبحث. جرّب اسم أو إيميل تاني.' : 'لسه مفيش طلاب مسجلين.'}</div>`;
                 return;
             }
             list.innerHTML = filtered.map(s => {
-                const rewards = s.rewards || [];
-                const rewardsChips = rewards.map(r => `<span class="reward-chip" style="font-size:.72rem;padding:.25rem .6rem;">🏅 ${escapeHTML(r)}</span>`).join('');
+                const id = escapeHTML(s.id);
+                const open = s.id === openStudentId;
                 const lvl = computeLevel(s.points || 0);
                 const initial = (s.name || s.email || '?').trim().charAt(0).toUpperCase();
+                const rewards = (s.rewards || []).map(r => `<span class="reward-chip">🏅 ${escapeHTML(r)}</span>`).join('') || '<span class="ld-muted">لسه معندوش مكافآت</span>';
                 return `
-                <div class="student-card">
-                    <div class="student-top">
-                        <div class="student-avatar">${initial}</div>
-                        <div style="flex:1;min-width:0;">
-                            <div class="student-name">${escapeHTML(s.name || 'بدون اسم')} ${s.role === 'admin' ? '👑' : ''}</div>
-                            <div class="student-meta" dir="ltr">${escapeHTML(s.email || '')}</div>
-                            <span class="student-level-chip">${lvl.name} · مستوى ${lvl.level}</span>
-                            <div class="student-meta" style="margin-top:.3rem;">🚀 ${s.levelTests || 0} · 🎮 ${s.quizzes || 0} · 📋 ${s.bookings || 0}</div>
-                        </div>
-                        <div class="points-ring">
-                            <div class="points-ring-num">${s.points || 0}</div>
-                            <div class="points-ring-lbl">نقطة</div>
-                        </div>
+                <div class="ld-item${open ? ' open' : ''}">
+                    <div class="ld-row">
+                        <button class="ld-main" onclick="toggleStudentRow('${id}')" aria-expanded="${open}">
+                            <span class="ld-rank">${adminFilterMode === 'points' ? rankOf[s.id] : ''}</span>
+                            <span class="ld-avatar">${escapeHTML(initial)}</span>
+                            <span class="ld-info">
+                                <span class="ld-name">${escapeHTML(s.name || 'بدون اسم')}${s.role === 'admin' ? '<em class="ld-tag">أدمن</em>' : ''}</span>
+                                <span class="ld-mail">${escapeHTML(s.email || '')}</span>
+                                <span class="ld-lvl"><span class="ld-lvl-bar"><i style="width:${lvl.percent}%"></i></span>${escapeHTML(lvl.name)}</span>
+                            </span>
+                            <span class="ld-pts"><b>${fmt(s.points)}</b><small>نقطة</small></span>
+                        </button>
+                        <button class="ld-btn ld-quick" onclick="adminAddPoints('${id}',10)" title="إضافة 10 نقاط">+10</button>
                     </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem;">${rewardsChips}</div>
-                    <div class="student-actions">
-                        <button class="act-btn pts" onclick="adminAddPoints('${s.id}',10)">+10 نقطة</button>
-                        <button class="act-btn pts" onclick="adminAddPoints('${s.id}',25)">+25 نقطة</button>
-                        <button class="act-btn custom" onclick="adminCustomPoints('${s.id}')">نقاط مخصصة</button>
-                        <button class="act-btn reward" onclick="adminAddReward('${s.id}')">🏅 إضافة مكافأة</button>
+                    <div class="ld-detail">
+                        <div class="ld-facts">
+                            <span>اختبارات المستوى<b>${s.levelTests || 0}</b></span>
+                            <span>التحديات<b>${s.quizzes || 0}</b></span>
+                            <span>الحجوزات<b>${s.bookings || 0}</b></span>
+                        </div>
+                        <div class="ld-ctl">
+                            <button class="ld-btn" onclick="adminAddPoints('${id}',25)">+25</button>
+                            <button class="ld-btn" onclick="adminAddPoints('${id}',-10)">−10</button>
+                            <input id="ldPts_${id}" class="ld-input" type="number" inputmode="numeric" placeholder="عدد مخصص (سالب للخصم)" onkeydown="if(event.key==='Enter')adminApplyCustom('${id}')">
+                            <button class="ld-btn ld-primary" onclick="adminApplyCustom('${id}')">تطبيق</button>
+                        </div>
+                        <div class="ld-ctl">
+                            <input id="ldRew_${id}" class="ld-input" placeholder="اسم المكافأة (مثال: شهادة تفوق)" onkeydown="if(event.key==='Enter')adminGrantReward('${id}')">
+                            <button class="ld-btn ld-primary" onclick="adminGrantReward('${id}')">منح مكافأة</button>
+                        </div>
+                        <div class="ld-rewards">${rewards}</div>
                     </div>
                 </div>`;
             }).join('');
         };
 
-        window.adminAddPoints = function(uid, amount) {
-            db.collection('students').doc(uid).update({
-                points: firebase.firestore.FieldValue.increment(amount)
-            });
+        let ldToastTimer = null;
+        function adminToast(msg, kind) {
+            const el = document.getElementById('ldToast');
+            el.textContent = msg;
+            el.className = 'ld-toast show ' + (kind || 'ok');
+            clearTimeout(ldToastTimer);
+            ldToastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+        }
+        function studentName(uid) { const s = allStudents.find(x => x.id === uid); return (s && s.name) || 'الطالب'; }
+
+        function adminApply(uid, n) {
+            return db.collection('students').doc(uid).update({ points: firebase.firestore.FieldValue.increment(n) })
+                .then(() => adminToast(`${n > 0 ? 'تمت إضافة' : 'تم خصم'} ${Math.abs(n)} نقطة ${n > 0 ? 'إلى' : 'من'} ${studentName(uid)}`, 'ok'))
+                .catch(() => adminToast('تعذر تعديل النقاط — راجع قواعد Firestore', 'err'));
+        }
+        window.adminAddPoints = function(uid, amount) { adminApply(uid, amount); };
+        window.adminApplyCustom = function(uid) {
+            const el = document.getElementById('ldPts_' + uid);
+            const n = parseInt(el.value, 10);
+            if (!n) { adminToast('اكتب عدد نقاط صحيح', 'err'); return; }
+            el.value = '';
+            adminApply(uid, n);
         };
-        window.adminCustomPoints = function(uid) {
-            const val = prompt('اكتب عدد النقاط (ممكن يكون بالسالب لخصم نقاط):', '5');
-            if (val === null) return;
-            const n = parseInt(val, 10);
-            if (isNaN(n)) return;
-            db.collection('students').doc(uid).update({
-                points: firebase.firestore.FieldValue.increment(n)
-            });
-        };
-        window.adminAddReward = function(uid) {
-            const val = prompt('اكتب اسم المكافأة (مثال: شهادة تفوق):', '');
-            if (!val || !val.trim()) return;
-            db.collection('students').doc(uid).update({
-                rewards: firebase.firestore.FieldValue.arrayUnion(val.trim())
-            });
+        window.adminGrantReward = function(uid) {
+            const el = document.getElementById('ldRew_' + uid);
+            const v = (el.value || '').trim();
+            if (!v) { adminToast('اكتب اسم المكافأة', 'err'); return; }
+            el.value = '';
+            db.collection('students').doc(uid).update({ rewards: firebase.firestore.FieldValue.arrayUnion(v) })
+                .then(() => adminToast(`تم منح "${v}" إلى ${studentName(uid)}`, 'ok'))
+                .catch(() => adminToast('تعذر منح المكافأة — راجع قواعد Firestore', 'err'));
         };
     })();
     </script>
