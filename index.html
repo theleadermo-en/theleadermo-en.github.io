@@ -4295,38 +4295,21 @@
             color:#ff9b9b; font-family:inherit; font-weight:700; font-size:.9rem; cursor:pointer; transition: background .2s; }
         .logout-btn:hover { background:rgba(255,80,80,0.18); }
 
-        /* ===== Leader Admin Dashboard ===== */
-        #leaderAdminOverlay { --ld-line: rgba(199,125,255,0.2); --ld-mute:#a9a3c2; }
-        .ld-card { max-width:860px; }
-        .ld-bar { position:sticky; top:0; z-index:4; display:flex; align-items:center; gap:.6rem; padding:.9rem 1.4rem;
-            background:rgba(21,0,51,0.96); backdrop-filter:blur(8px); border-bottom:1px solid var(--ld-line); }
-        .ld-bar > div:first-child { margin-left:auto; min-width:0; }
-        .ld-bar h2 { font-size:1.15rem; font-weight:800; color:#fff; line-height:1.3; }
-        .ld-me { font-size:.74rem; color:var(--ld-mute); text-align:right; overflow:hidden; text-overflow:ellipsis; }
+        /* ===== Leader Admin Dashboard (base controls) ===== */
         .ld-btn { border:1px solid var(--ld-line); background:rgba(255,255,255,0.05); color:#E0AAFF; border-radius:9px; padding:.45rem .8rem;
             font-family:inherit; font-weight:700; font-size:.78rem; cursor:pointer; white-space:nowrap; transition:background .15s, border-color .15s; }
         .ld-btn:hover { background:rgba(199,125,255,0.16); border-color:rgba(199,125,255,0.5); }
         .ld-btn.ld-primary { background:#7B2CBF; border-color:#7B2CBF; color:#fff; }
         .ld-btn.ld-primary:hover { background:#8f3fd6; }
-        .ld-x { width:34px; height:34px; padding:0; border-radius:50%; }
         .ld-btn:focus-visible, .ld-input:focus-visible, .ld-search:focus-visible, .ld-main:focus-visible { outline:2px solid #C77DFF; outline-offset:2px; }
 
-        .ld-stats { display:grid; grid-template-columns:repeat(4,1fr); margin:1.2rem 1.4rem; border:1px solid var(--ld-line); border-radius:14px; }
-        .ld-stat { padding:.9rem 1rem; }
-        .ld-stat + .ld-stat { border-right:1px solid var(--ld-line); }
-        .ld-stat b { display:block; font-size:1.5rem; font-weight:800; color:#fff; font-variant-numeric:tabular-nums; line-height:1.2; }
-        .ld-stat b.pts { color:#EA6113; }
-        .ld-stat span { font-size:.74rem; color:var(--ld-mute); }
 
-        .ld-tools { display:flex; gap:.6rem; flex-wrap:wrap; padding:0 1.4rem .9rem; }
         .ld-search { flex:1 1 220px; min-width:0; background:rgba(255,255,255,0.05); border:1px solid var(--ld-line); border-radius:10px;
             padding:.6rem .9rem; color:#F3F4F6; font-family:inherit; font-size:.86rem; }
         .ld-seg { display:flex; border:1px solid var(--ld-line); border-radius:10px; overflow:hidden; }
         .ld-seg button { border:0; background:transparent; color:var(--ld-mute); font-family:inherit; font-weight:700; font-size:.78rem; padding:.55rem .9rem; cursor:pointer; }
         .ld-seg button + button { border-right:1px solid var(--ld-line); }
         .ld-seg button.on { background:rgba(199,125,255,0.2); color:#fff; }
-        .ld-count { padding:0 1.4rem .6rem; font-size:.8rem; color:var(--ld-mute); }
-        .ld-list { padding:0 1.4rem 1.6rem; }
 
         .ld-item { border:1px solid var(--ld-line); border-radius:12px; margin-bottom:.5rem; background:rgba(255,255,255,0.03); overflow:hidden; }
         .ld-item.open { border-color:rgba(199,125,255,0.55); background:rgba(255,255,255,0.055); }
@@ -4365,19 +4348,120 @@
         .ld-toast.show { opacity:1; transform:translate(-50%,0); }
         .ld-toast.ok { border-color:rgba(74,222,128,0.6); }
         .ld-toast.err { border-color:rgba(255,120,120,0.7); color:#ffb3b3; }
+
+        /* ===== Leader Admin Dashboard v2 ===== */
+        #leaderAdminOverlay { --ld-line: rgba(199,125,255,0.2); --ld-mute:#a9a3c2; --ldx-surface:rgba(255,255,255,0.045); padding:0; background:#0b0020; backdrop-filter:none; }
+        .ldx-shell { display:flex; width:100%; height:100%; background:radial-gradient(1200px 600px at 85% -10%, rgba(123,44,191,0.28), transparent 60%), linear-gradient(160deg,#10002B,#1d0545); }
+        .ldx-side { width:250px; flex-shrink:0; display:flex; flex-direction:column; gap:.4rem; padding:1.2rem .9rem; background:rgba(12,0,34,0.7); border-left:1px solid var(--ld-line); }
+        .ldx-brand { display:flex; align-items:center; gap:.7rem; padding:.3rem .5rem 1rem; border-bottom:1px solid var(--ld-line); margin-bottom:.6rem; }
+        .ldx-logo { width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; background:linear-gradient(135deg,#7B2CBF,#EA6113); box-shadow:0 6px 18px rgba(123,44,191,0.45); }
+        .ldx-brand b { display:block; font-size:1.05rem; color:#fff; line-height:1.2; }
+        .ldx-brand small { color:#ffb37a; font-size:.72rem; font-weight:700; }
+        .ldx-cap { font-size:.7rem; color:var(--ld-mute); padding:.6rem .6rem .2rem; font-weight:700; }
+        .ldx-nav { display:flex; flex-direction:column; gap:.3rem; }
+        .ldx-nav button { display:flex; align-items:center; gap:.7rem; width:100%; padding:.65rem .7rem; border:1px solid transparent; border-radius:12px; background:none; color:#d9ccf0;
+            font-family:inherit; font-size:.92rem; font-weight:700; cursor:pointer; text-align:right; transition:background .15s,border-color .15s; position:relative; }
+        .ldx-nav button i { font-style:normal; width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center; background:rgba(199,125,255,0.14); font-size:1rem; flex-shrink:0; }
+        .ldx-nav button:hover { background:rgba(199,125,255,0.1); }
+        .ldx-nav button.on { background:rgba(199,125,255,0.16); border-color:rgba(199,125,255,0.4); color:#fff; }
+        .ldx-nav button.on::after { content:''; position:absolute; left:-.9rem; top:22%; bottom:22%; width:4px; border-radius:4px; background:#EA6113; }
+        .ldx-side-foot { margin-top:auto; padding-top:.8rem; border-top:1px solid var(--ld-line); display:flex; flex-direction:column; gap:.6rem; }
+        .ld-me { font-size:.74rem; color:var(--ld-mute); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .ldx-main { flex:1; min-width:0; display:flex; flex-direction:column; }
+        .ldx-top { display:flex; align-items:center; gap:.8rem; padding:1.1rem 1.6rem; border-bottom:1px solid var(--ld-line); background:rgba(16,0,43,0.6); backdrop-filter:blur(8px); }
+        .ldx-top h2 { font-size:1.45rem; font-weight:800; color:#fff; line-height:1.25; }
+        .ldx-top p { font-size:.82rem; color:var(--ld-mute); }
+        .ldx-top .ldx-grow { flex:1; min-width:0; }
+        .ldx-live { display:inline-flex; align-items:center; gap:.4rem; font-size:.72rem; font-weight:700; color:#86efac; border:1px solid rgba(74,222,128,0.35); border-radius:20px; padding:.2rem .6rem; }
+        .ldx-live::before { content:''; width:7px; height:7px; border-radius:50%; background:#4ade80; box-shadow:0 0 8px #4ade80; }
+        .ldx-body { flex:1; overflow-y:auto; padding:1.4rem 1.6rem 2.4rem; scroll-behavior:smooth; }
+        .ldx-sec { display:none; max-width:1180px; margin:0 auto; }
+        .ldx-sec.on { display:block; animation:ldOpen .22s ease-out; }
+        .ldx-h { display:flex; align-items:center; gap:.5rem; font-size:1rem; font-weight:800; color:#fff; margin:1.4rem 0 .8rem; }
+        .ldx-h:first-child { margin-top:0; }
+        .ldx-h small { font-weight:600; color:var(--ld-mute); font-size:.76rem; margin-right:auto; }
+
+        .ldx-grid { display:grid; gap:.9rem; }
+        .ldx-g3 { grid-template-columns:repeat(3,1fr); } .ldx-g2 { grid-template-columns:repeat(2,1fr); }
+        .ldx-stat { position:relative; overflow:hidden; display:flex; align-items:center; gap:.9rem; padding:1rem 1.1rem; border-radius:16px; background:var(--ldx-surface); border:1px solid var(--ld-line); }
+        .ldx-stat::before { content:''; position:absolute; top:0; right:0; left:0; height:3px; background:var(--c,#C77DFF); }
+        .ldx-stat::after { content:''; position:absolute; left:-30px; bottom:-40px; width:110px; height:110px; border-radius:50%; background:var(--c,#C77DFF); opacity:.07; }
+        .ldx-ico { width:46px; height:46px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:1.35rem; flex-shrink:0; background:color-mix(in srgb, var(--c,#C77DFF) 18%, transparent); }
+        .ldx-stat b { display:block; font-size:1.7rem; font-weight:800; color:#fff; line-height:1.15; font-variant-numeric:tabular-nums; }
+        .ldx-stat span { font-size:.78rem; color:var(--ld-mute); }
+        .ldx-panel { background:var(--ldx-surface); border:1px solid var(--ld-line); border-radius:16px; padding:1.1rem 1.2rem; min-width:0; }
+        .ldx-panel > h3 { font-size:.95rem; font-weight:800; color:#fff; margin-bottom:.9rem; display:flex; align-items:center; gap:.45rem; }
+        .ldx-2col { display:grid; grid-template-columns:1.4fr 1fr; gap:.9rem; margin-top:.9rem; }
+        .ldx-chart { display:flex; align-items:flex-end; gap:6px; height:150px; padding-top:1.2rem; }
+        .ldx-col { flex:1; height:100%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:.3rem; min-width:0; }
+        .ldx-col i { display:block; width:100%; max-width:26px; border-radius:6px 6px 2px 2px; background:linear-gradient(180deg,#C77DFF,#7B2CBF); min-height:3px; position:relative; }
+        .ldx-col i.today { background:linear-gradient(180deg,#ff8c42,#EA6113); }
+        .ldx-col em { font-style:normal; font-size:.62rem; color:var(--ld-mute); }
+        .ldx-col u { text-decoration:none; font-size:.68rem; color:#fff; font-weight:700; min-height:1em; }
+        .ldx-bar-row { display:flex; align-items:center; gap:.7rem; margin-bottom:.7rem; font-size:.82rem; }
+        .ldx-bar-row > span:first-child { width:96px; flex-shrink:0; color:#d9ccf0; }
+        .ldx-track { flex:1; height:8px; background:rgba(255,255,255,0.1); border-radius:6px; overflow:hidden; }
+        .ldx-track i { display:block; height:100%; border-radius:6px; background:var(--c,#C77DFF); transition:width .5s; }
+        .ldx-bar-row b { width:2.6rem; text-align:left; color:#fff; font-variant-numeric:tabular-nums; }
+        .ldx-mini { display:flex; align-items:center; gap:.7rem; padding:.55rem 0; border-bottom:1px dashed var(--ld-line); }
+        .ldx-mini:last-child { border-bottom:0; }
+        .ldx-mini .ld-avatar { width:34px; height:34px; font-size:.85rem; }
+        .ldx-mini .ld-info { min-width:0; }
+        .ldx-medal { width:1.4rem; text-align:center; font-weight:800; color:var(--ld-mute); }
+        .ldx-val { font-weight:800; color:#EA6113; font-variant-numeric:tabular-nums; font-size:.95rem; }
+
+        .ldx-tools { display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:.8rem; align-items:center; }
+        .ld-count { font-size:.8rem; color:var(--ld-mute); margin-bottom:.6rem; }
+
+        .ldx-vid { display:flex; align-items:center; gap:.9rem; padding:.7rem; margin-bottom:.55rem; border:1px solid var(--ld-line); border-radius:14px; background:var(--ldx-surface); transition:border-color .15s; }
+        .ldx-vid.editing { border-color:#f59e0b; }
+        .ldx-thumb { width:116px; aspect-ratio:16/9; border-radius:9px; flex-shrink:0; object-fit:cover; background:#2a0a52; }
+        .ldx-vid .ld-info b { display:block; color:#fff; font-size:.9rem; line-height:1.45; }
+        .ldx-meta { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.35rem; align-items:center; font-size:.72rem; }
+        .ldx-chip { direction:ltr; border-radius:6px; padding:.1rem .5rem; border:1px solid var(--ld-line); color:var(--ld-mute); }
+        .ldx-chip.code { color:#ffb37a; border-color:rgba(234,97,19,0.4); background:rgba(234,97,19,0.1); }
+        .ldx-chip.bad { color:#ff9b9b; border-color:rgba(255,107,107,0.4); background:rgba(255,107,107,0.1); cursor:pointer; direction:rtl; }
+        .ldx-chip.ok { color:#86efac; border-color:rgba(74,222,128,0.35); direction:rtl; }
+        .ldx-acts { display:flex; gap:.35rem; flex-shrink:0; }
+        .ldx-acts .ld-btn { padding:.4rem .6rem; }
+        .ld-btn.ld-danger { color:#ff9b9b; border-color:rgba(255,107,107,0.4); }
+        .ld-btn.ld-danger:hover { background:rgba(255,107,107,0.16); }
+        .ldx-form { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+        .ldx-form .wide { grid-column:1/-1; }
+        .ldx-form .ld-input { flex:none; padding:.6rem .8rem; }
+        .ldx-row { display:flex; align-items:center; gap:.8rem; padding:.65rem 0; border-bottom:1px dashed var(--ld-line); font-size:.86rem; }
+        .ldx-row:last-child { border-bottom:0; }
+        .ldx-row > div { flex:1; min-width:0; } .ldx-row small { display:block; color:var(--ld-mute); font-size:.74rem; }
+        .ldx-nav-mobile-x { display:none; }
+
         .nav-admin a { color:#ffb37a; }
+        .ld-x { width:34px; height:34px; padding:0; border-radius:50%; }
         .footer-links a.footer-admin-link { display:inline-flex; align-self:flex-start; align-items:center; gap:.4rem; margin-top:.4rem; padding:.35rem .8rem;
             border:1px solid rgba(234,97,19,0.55); border-radius:9px; color:#ffb37a; font-weight:700; }
         .footer-links a.footer-admin-link::before { display:none; }
-        @media (max-width:560px) {
-            .ld-stats { grid-template-columns:repeat(2,1fr); }
-            .ld-stat:nth-child(3) { border-right:0; }
-            .ld-stat:nth-child(n+3) { border-top:1px solid var(--ld-line); }
-            .ld-bar { padding:.8rem 1rem; } .ld-bar .ld-videos-btn { padding:.4rem .6rem; }
-            .ld-stats, .ld-tools, .ld-count, .ld-list { margin-left:1rem; margin-right:1rem; padding-left:0; padding-right:0; }
+        @media (max-width:980px) { .ldx-g3 { grid-template-columns:repeat(2,1fr); } .ldx-2col { grid-template-columns:1fr; } }
+        @media (max-width:760px) {
+            .ldx-shell { flex-direction:column-reverse; }
+            .ldx-side { width:100%; flex-direction:row; padding:.35rem .5rem; border-left:0; border-top:1px solid var(--ld-line); gap:0; }
+            .ldx-brand, .ldx-cap, .ldx-side-foot { display:none; }
+            .ldx-nav { flex-direction:row; width:100%; gap:.15rem; }
+            .ldx-nav button { flex-direction:column; gap:.1rem; padding:.35rem .2rem; font-size:.66rem; justify-content:center; text-align:center; }
+            .ldx-nav button i { width:30px; height:30px; background:none; }
+            .ldx-nav button.on::after { left:25%; right:25%; top:auto; bottom:0; width:auto; height:3px; }
+            .ldx-top { padding:.8rem 1rem; } .ldx-top h2 { font-size:1.15rem; } .ldx-top p { display:none; }
+            .ldx-nav-mobile-x { display:inline-flex; }
+            .ldx-body { padding:1rem 1rem 1.6rem; }
+            .ldx-stat { padding:.8rem; gap:.6rem; flex-direction:row; } .ldx-stat b { font-size:1.3rem; } .ldx-ico { width:38px; height:38px; font-size:1.1rem; }
+            .ldx-form { grid-template-columns:1fr; }
+            .ldx-vid { flex-wrap:wrap; } .ldx-thumb { width:100%; }
+            .ldx-acts { width:100%; } .ldx-acts .ld-btn { flex:1; }
             .ld-lvl-bar { flex-basis:56px; }
         }
-        @media (prefers-reduced-motion:reduce) { .ld-item.open .ld-detail, .ld-toast { animation:none; transition:none; } }
+        @media (max-width:380px) { .ldx-g3, .ldx-g2 { grid-template-columns:1fr; } }
+        @media (prefers-reduced-motion:reduce) { .ld-item.open .ld-detail, .ld-toast, .ldx-sec.on { animation:none; transition:none; } }
+        button.ldx-chip { font:inherit; font-size:.72rem; }
+        .ldx-chip.bad:focus-visible { outline:2px solid #C77DFF; outline-offset:2px; }
+
     </style>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -5388,31 +5472,128 @@
 
     <!-- ===== LEADER ADMIN DASHBOARD ===== -->
     <div id="leaderAdminOverlay" class="dash-overlay" role="dialog" aria-modal="true" aria-label="لوحة التحكم">
-        <div class="dash-card ld-card">
-            <div class="ld-bar">
-                <div>
-                    <h2>لوحة التحكم</h2>
+        <div class="ldx-shell">
+            <aside class="ldx-side">
+                <div class="ldx-brand"><div class="ldx-logo">🏆</div><div><b>منصة الليدر</b><small>لوحة التحكم</small></div></div>
+                <div class="ldx-cap">القائمة</div>
+                <nav class="ldx-nav" aria-label="أقسام لوحة التحكم">
+                    <button class="on" data-sec="overview" onclick="ldxGo('overview')"><i>📊</i><span>نظرة عامة</span></button>
+                    <button data-sec="students" onclick="ldxGo('students')"><i>👥</i><span>الطلبة</span></button>
+                    <button data-sec="videos" onclick="ldxGo('videos')"><i>🎬</i><span>الفيديوهات</span></button>
+                    <button data-sec="activity" onclick="ldxGo('activity')"><i>⚡</i><span>نشاط الطلبة</span></button>
+                    <button data-sec="settings" onclick="ldxGo('settings')"><i>⚙️</i><span>الإعدادات</span></button>
+                </nav>
+                <div class="ldx-side-foot">
                     <div class="ld-me" id="ldWho" dir="ltr"></div>
+                    <button class="ld-btn" onclick="closeLeaderAdmin()">↩ الرجوع للموقع</button>
                 </div>
-                <button class="ld-btn ld-videos-btn" onclick="closeLeaderAdmin(); openAdminPanel();">إدارة الفيديوهات</button>
-                <button class="ld-btn ld-x" onclick="closeLeaderAdmin()" aria-label="إغلاق">✕</button>
-            </div>
-            <div class="ld-stats">
-                <div class="ld-stat"><b id="adminStatTotal">0</b><span>إجمالي الطلاب</span></div>
-                <div class="ld-stat"><b id="adminStatPoints" class="pts">0</b><span>إجمالي النقاط</span></div>
-                <div class="ld-stat"><b id="adminStatAvg">0</b><span>متوسط النقاط للطالب</span></div>
-                <div class="ld-stat"><b id="adminStatToday">0</b><span>سجّلوا النهارده</span></div>
-            </div>
-            <div class="ld-tools">
-                <input id="adminStudentSearch" oninput="renderLeaderStudents()" class="ld-search" placeholder="ابحث بالاسم أو الإيميل" aria-label="بحث عن طالب">
-                <div class="ld-seg">
-                    <button class="on" id="adminFilterPoints" onclick="setAdminFilter('points')">الأعلى نقاطاً</button>
-                    <button id="adminFilterNewest" onclick="setAdminFilter('newest')">الأحدث</button>
-                    <button id="adminFilterName" onclick="setAdminFilter('name')">الاسم</button>
+            </aside>
+            <div class="ldx-main">
+                <header class="ldx-top">
+                    <div class="ldx-grow"><h2 id="ldxTitle">نظرة عامة</h2><p id="ldxSub">ملخص سريع لكل حاجة في المنصة</p></div>
+                    <span class="ldx-live">مباشر</span>
+                    <button class="ld-btn ld-x ldx-nav-mobile-x" onclick="closeLeaderAdmin()" aria-label="إغلاق">✕</button>
+                </header>
+                <div class="ldx-body" id="ldxBody">
+
+                    <!-- Overview -->
+                    <section class="ldx-sec on" id="ldxSec-overview">
+                        <div class="ldx-h">👥 الطلبة</div>
+                        <div class="ldx-grid ldx-g3">
+                            <div class="ldx-stat" style="--c:#38bdf8"><div class="ldx-ico">👥</div><div><b id="adminStatTotal">0</b><span>إجمالي الطلاب</span></div></div>
+                            <div class="ldx-stat" style="--c:#EA6113"><div class="ldx-ico">⭐</div><div><b id="adminStatPoints">0</b><span>إجمالي النقاط</span></div></div>
+                            <div class="ldx-stat" style="--c:#C77DFF"><div class="ldx-ico">📈</div><div><b id="adminStatAvg">0</b><span>متوسط النقاط للطالب</span></div></div>
+                            <div class="ldx-stat" style="--c:#4ade80"><div class="ldx-ico">🆕</div><div><b id="adminStatToday">0</b><span>سجّلوا النهارده</span></div></div>
+                            <div class="ldx-stat" style="--c:#facc15"><div class="ldx-ico">🗓️</div><div><b id="adminStatWeek">0</b><span>سجّلوا آخر 7 أيام</span></div></div>
+                            <div class="ldx-stat" style="--c:#f472b6"><div class="ldx-ico">🏅</div><div><b id="adminStatRewards">0</b><span>مكافآت ممنوحة</span></div></div>
+                        </div>
+                        <div class="ldx-h">🎬 المحتوى</div>
+                        <div class="ldx-grid ldx-g3">
+                            <div class="ldx-stat" style="--c:#f87171"><div class="ldx-ico">▶️</div><div><b id="ldxStatVideos">0</b><span>إجمالي الفيديوهات</span></div></div>
+                            <div class="ldx-stat" style="--c:#a78bfa"><div class="ldx-ico">📚</div><div><b id="ldxStatPrep">0</b><span>فيديوهات إعدادي</span></div></div>
+                            <div class="ldx-stat" style="--c:#fb923c"><div class="ldx-ico">🎓</div><div><b id="ldxStatSec">0</b><span>فيديوهات ثانوي</span></div></div>
+                        </div>
+                        <div class="ldx-2col">
+                            <div class="ldx-panel"><h3>📅 التسجيلات آخر 14 يوم</h3><div class="ldx-chart" id="ldxSignups"></div></div>
+                            <div class="ldx-panel"><h3>🧩 توزيع النشاط</h3><div id="ldxActMix"></div></div>
+                        </div>
+                        <div class="ldx-2col" style="grid-template-columns:1fr 1fr">
+                            <div class="ldx-panel"><h3>🏆 أعلى 5 طلاب</h3><div id="ldxTop"></div></div>
+                            <div class="ldx-panel"><h3>🕒 آخر المسجلين</h3><div id="ldxRecent"></div></div>
+                        </div>
+                    </section>
+
+                    <!-- Students -->
+                    <section class="ldx-sec" id="ldxSec-students">
+                        <div class="ldx-tools">
+                            <input id="adminStudentSearch" oninput="renderLeaderStudents()" class="ld-search" placeholder="ابحث بالاسم أو الإيميل" aria-label="بحث عن طالب">
+                            <div class="ld-seg">
+                                <button class="on" id="adminFilterPoints" onclick="setAdminFilter('points')">الأعلى نقاطاً</button>
+                                <button id="adminFilterNewest" onclick="setAdminFilter('newest')">الأحدث</button>
+                                <button id="adminFilterName" onclick="setAdminFilter('name')">الاسم</button>
+                            </div>
+                            <button class="ld-btn" onclick="ldxExportCSV()">⬇ تصدير CSV</button>
+                        </div>
+                        <div id="adminStudentCount" class="ld-count">جاري التحميل...</div>
+                        <div id="adminStudentsList"></div>
+                    </section>
+
+                    <!-- Videos -->
+                    <section class="ldx-sec" id="ldxSec-videos">
+                        <div class="ldx-tools">
+                            <div class="ld-seg">
+                                <button class="on" id="ldxTabPrep" onclick="ldxVidTab('preparatory')">📚 إعدادي</button>
+                                <button id="ldxTabSec" onclick="ldxVidTab('secondary')">🎓 ثانوي</button>
+                            </div>
+                            <span class="ld-count" id="ldxVidCount" style="margin:0"></span>
+                        </div>
+                        <div id="ldxVidList"></div>
+                        <div class="ldx-panel" style="margin-top:1rem">
+                            <h3 id="ldxVidFormTitle">➕ إضافة فيديو جديد</h3>
+                            <div class="ldx-form">
+                                <input id="ldxVidId" class="ld-input" dir="ltr" placeholder="YouTube ID أو رابط الفيديو">
+                                <input id="ldxVidCode" class="ld-input" dir="ltr" placeholder="كود الفتح (مثال: mo1edu2026)">
+                                <input id="ldxVidTitle" class="ld-input wide" placeholder="عنوان الفيديو">
+                                <div class="wide ldx-ctl-row" style="display:flex;gap:.5rem">
+                                    <button class="ld-btn ld-primary" id="ldxVidSubmit" onclick="ldxVidSubmit()" style="flex:1;padding:.65rem">➕ إضافة الفيديو</button>
+                                    <button class="ld-btn" id="ldxVidCancel" onclick="ldxVidCancel()" style="display:none;padding:.65rem 1.2rem">إلغاء</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Activity -->
+                    <section class="ldx-sec" id="ldxSec-activity">
+                        <div class="ldx-grid ldx-g3" id="ldxActStats"></div>
+                        <div class="ldx-h">🥇 لوحات الصدارة</div>
+                        <div class="ldx-grid ldx-g3" id="ldxBoards"></div>
+                        <div class="ldx-h">🎚️ توزيع المستويات</div>
+                        <div class="ldx-panel" id="ldxLevels"></div>
+                    </section>
+
+                    <!-- Settings -->
+                    <section class="ldx-sec" id="ldxSec-settings">
+                        <div class="ldx-2col" style="grid-template-columns:1fr 1fr;margin-top:0">
+                            <div class="ldx-panel"><h3>🔐 الحساب</h3>
+                                <div class="ldx-row"><div><b id="ldxSetName">—</b><small id="ldxSetMail" dir="ltr"></small></div><span class="ldx-chip ok">أدمن</span></div>
+                            </div>
+                            <div class="ldx-panel"><h3>🛠️ أدوات البيانات</h3>
+                                <div class="ldx-row"><div>تصدير بيانات الطلاب<small>ملف CSV يفتح في Excel</small></div><button class="ld-btn" onclick="ldxExportCSV()">تصدير</button></div>
+                                <div class="ldx-row"><div>نسخة احتياطية للفيديوهات<small>ملف JSON بكل الفيديوهات والأكواد</small></div><button class="ld-btn" onclick="ldxBackupVideos()">تنزيل</button></div>
+                                <div class="ldx-row"><div>استرجاع نسخة الفيديوهات<small>يستبدل القائمة الحالية</small></div><button class="ld-btn" onclick="document.getElementById('ldxRestore').click()">رفع</button><input type="file" id="ldxRestore" accept="application/json" hidden onchange="ldxRestoreVideos(this)"></div>
+                                <div class="ldx-row"><div>فك حظر كل الفيديوهات<small>يمسح عدّاد المشاهدات على الجهاز ده</small></div><button class="ld-btn ld-danger" onclick="ldxResetAllAttempts()">فك الكل</button></div>
+                            </div>
+                        </div>
+                        <div class="ldx-panel" style="margin-top:.9rem"><h3>👑 المشرفون</h3>
+                            <div id="ldxAdmins" class="ld-count">جاري التحميل...</div>
+                            <div class="ldx-ctl-row" style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.6rem">
+                                <input id="ldxNewAdmin" class="ld-input" dir="ltr" type="email" placeholder="إيميل مشرف جديد" onkeydown="if(event.key==='Enter')ldxAddAdmin()">
+                                <button class="ld-btn ld-primary" onclick="ldxAddAdmin()">إضافة مشرف</button>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
-            <div id="adminStudentCount" class="ld-count">جاري التحميل...</div>
-            <div id="adminStudentsList" class="ld-list"></div>
         </div>
         <div id="ldToast" class="ld-toast" role="status"></div>
     </div>
@@ -9621,63 +9802,141 @@
             return (str || '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
         }
 
-        // ── Leader Admin Dashboard (students management) ───────────────────────
+        // ── Leader Admin Dashboard v2 ──────────────────────────────────────────
+        const LDX_TITLES = {
+            overview: ['نظرة عامة', 'ملخص سريع لكل حاجة في المنصة'],
+            students: ['الطلبة', 'إدارة الحسابات والنقاط والمكافآت'],
+            videos:   ['الفيديوهات والمحتوى', 'إضافة وتعديل وتنظيم الفيديوهات وأكواد الفتح'],
+            activity: ['نشاط الطلبة', 'مين بيتفاعل أكتر وإزاي المستويات موزعة'],
+            settings: ['الإعدادات', 'الحساب والمشرفين وأدوات البيانات']
+        };
+        const $ = id => document.getElementById(id);
+        let ldxSec = 'overview';
+        window.ldxGo = function(sec) {
+            ldxSec = sec;
+            document.querySelectorAll('.ldx-sec').forEach(e => e.classList.toggle('on', e.id === 'ldxSec-' + sec));
+            document.querySelectorAll('.ldx-nav button').forEach(b => b.classList.toggle('on', b.dataset.sec === sec));
+            $('ldxTitle').textContent = LDX_TITLES[sec][0];
+            $('ldxSub').textContent = LDX_TITLES[sec][1];
+            $('ldxBody').scrollTop = 0;
+            if (sec === 'videos') renderVideosAdmin();
+            if (sec === 'settings') loadAdminsList();
+            if (sec === 'overview') renderOverview();
+        };
+
         window.openLeaderAdmin = function() {
             if (!isAdminUser) return;
-            document.getElementById('leaderAdminOverlay').style.display = 'flex';
+            $('leaderAdminOverlay').style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            document.getElementById('ldWho').textContent = currentUser ? currentUser.email : '';
+            const mail = currentUser ? currentUser.email : '';
+            $('ldWho').textContent = mail;
+            $('ldxSetMail').textContent = mail;
+            $('ldxSetName').textContent = (currentUser && currentUser.displayName) || 'المشرف';
             startStudentsListener();
+            ldxGo('overview');
         };
         window.closeLeaderAdmin = function() {
-            document.getElementById('leaderAdminOverlay').style.display = 'none';
+            $('leaderAdminOverlay').style.display = 'none';
             document.body.style.overflow = '';
             if (studentsUnsub) { studentsUnsub(); studentsUnsub = null; }
         };
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && document.getElementById('leaderAdminOverlay').style.display === 'flex') window.closeLeaderAdmin();
+            if (e.key === 'Escape' && $('leaderAdminOverlay').style.display === 'flex') window.closeLeaderAdmin();
         });
 
         let allStudents = [];
         let adminFilterMode = 'points';
         let openStudentId = null;
         const fmt = n => (n || 0).toLocaleString('en-US');
+        const msOf = x => (x.createdAt && x.createdAt.toMillis ? x.createdAt.toMillis() : 0);
+        const initialOf = s => escapeHTML((s.name || s.email || '?').trim().charAt(0).toUpperCase());
+        const actOf = s => (s.levelTests || 0) + (s.quizzes || 0) + (s.bookings || 0);
+        const dayStart = d => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
 
         function startStudentsListener() {
             if (studentsUnsub) studentsUnsub();
-            document.getElementById('adminStudentCount').textContent = 'جاري التحميل...';
-            studentsUnsub = db.collection('students').orderBy('points', 'desc').onSnapshot(function(qs) {
+            $('adminStudentCount').textContent = 'جاري التحميل...';
+            studentsUnsub = db.collection('students').onSnapshot(function(qs) {
                 allStudents = [];
                 qs.forEach(doc => allStudents.push({ id: doc.id, ...doc.data() }));
-                renderAdminStats();
+                renderAdminStats(); renderOverview(); renderActivity();
                 const ae = document.activeElement;
                 if (ae && ae.classList && ae.classList.contains('ld-input')) return; // don't wipe what the admin is typing
                 renderLeaderStudents();
             }, function() {
-                document.getElementById('adminStudentCount').textContent = 'تعذر تحميل بيانات الطلاب — راجع قواعد Firestore';
+                $('adminStudentCount').textContent = 'تعذر تحميل بيانات الطلاب — راجع قواعد Firestore';
             });
         }
 
         function renderAdminStats() {
             const total = allStudents.length;
             const totalPoints = allStudents.reduce((sum, s) => sum + (s.points || 0), 0);
-            const now = new Date();
-            const todayCount = allStudents.filter(s => {
-                if (!s.createdAt || !s.createdAt.toDate) return false;
-                const d = s.createdAt.toDate();
-                return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() === now.getDate();
-            }).length;
-            document.getElementById('adminStatTotal').textContent = fmt(total);
-            document.getElementById('adminStatPoints').textContent = fmt(totalPoints);
-            document.getElementById('adminStatAvg').textContent = fmt(total ? Math.round(totalPoints / total) : 0);
-            document.getElementById('adminStatToday').textContent = fmt(todayCount);
+            const t0 = dayStart(new Date());
+            const today = allStudents.filter(s => msOf(s) >= t0).length;
+            const week = allStudents.filter(s => msOf(s) >= t0 - 6 * 864e5).length;
+            const rewards = allStudents.reduce((n, s) => n + (s.rewards || []).length, 0);
+            $('adminStatTotal').textContent = fmt(total);
+            $('adminStatPoints').textContent = fmt(totalPoints);
+            $('adminStatAvg').textContent = fmt(total ? Math.round(totalPoints / total) : 0);
+            $('adminStatToday').textContent = fmt(today);
+            $('adminStatWeek').textContent = fmt(week);
+            $('adminStatRewards').textContent = fmt(rewards);
+        }
+
+        function barRow(label, val, max, color) {
+            return `<div class="ldx-bar-row" style="--c:${color}"><span>${label}</span><span class="ldx-track"><i style="width:${max ? Math.round(val / max * 100) : 0}%"></i></span><b>${fmt(val)}</b></div>`;
+        }
+        function miniRow(s, i, valHTML) {
+            return `<div class="ldx-mini">${i < 0 ? '' : `<span class="ldx-medal">${['🥇','🥈','🥉'][i] || (i + 1)}</span>`}<span class="ld-avatar">${initialOf(s)}</span>
+                <span class="ld-info"><span class="ld-name">${escapeHTML(s.name || 'بدون اسم')}</span><span class="ld-mail">${escapeHTML(s.email || '')}</span></span>${valHTML}</div>`;
+        }
+        const emptyMsg = '<div class="ld-empty">لسه مفيش بيانات</div>';
+
+        function renderOverview() {
+            $('ldxStatPrep').textContent = fmt((videosData.preparatory || []).length);
+            $('ldxStatSec').textContent = fmt((videosData.secondary || []).length);
+            $('ldxStatVideos').textContent = fmt((videosData.preparatory || []).length + (videosData.secondary || []).length);
+            // signups chart — last 14 days
+            const t0 = dayStart(new Date()), days = [];
+            for (let i = 13; i >= 0; i--) days.push({ t: t0 - i * 864e5, n: 0 });
+            allStudents.forEach(s => { const m = msOf(s); if (!m) return; const d = days.find(x => m >= x.t && m < x.t + 864e5); if (d) d.n++; });
+            const mx = Math.max(1, ...days.map(d => d.n));
+            $('ldxSignups').innerHTML = days.map((d, i) => `<div class="ldx-col" title="${d.n} تسجيل"><u>${d.n || ''}</u><i class="${i === 13 ? 'today' : ''}" style="height:${Math.round(d.n / mx * 100)}%"></i><em>${new Date(d.t).getDate()}</em></div>`).join('');
+            // activity mix
+            const lt = allStudents.reduce((n, s) => n + (s.levelTests || 0), 0), qz = allStudents.reduce((n, s) => n + (s.quizzes || 0), 0), bk = allStudents.reduce((n, s) => n + (s.bookings || 0), 0);
+            const m2 = Math.max(lt, qz, bk, 1);
+            $('ldxActMix').innerHTML = barRow('اختبارات المستوى', lt, m2, '#C77DFF') + barRow('التحديات', qz, m2, '#EA6113') + barRow('الحجوزات', bk, m2, '#4ade80');
+            // top + recent
+            const top = allStudents.slice().sort((a, b) => (b.points || 0) - (a.points || 0)).slice(0, 5);
+            $('ldxTop').innerHTML = top.length ? top.map((s, i) => miniRow(s, i, `<span class="ldx-val">${fmt(s.points)}</span>`)).join('') : emptyMsg;
+            const rec = allStudents.slice().sort((a, b) => msOf(b) - msOf(a)).slice(0, 5);
+            $('ldxRecent').innerHTML = rec.length ? rec.map((s, i) => miniRow(s, -1, `<span class="ld-muted">${msOf(s) ? new Date(msOf(s)).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short' }) : ''}</span>`)).join('') : emptyMsg;
+        }
+
+        function renderActivity() {
+            const total = allStudents.length;
+            const active = allStudents.filter(s => actOf(s) > 0).length;
+            const sum = k => allStudents.reduce((n, s) => n + (s[k] || 0), 0);
+            $('ldxActStats').innerHTML = [
+                ['⚡', 'إجمالي العمليات', fmt(sum('levelTests') + sum('quizzes') + sum('bookings')), '#C77DFF'],
+                ['✅', 'طلاب نشطين', fmt(active) + (total ? ` (${Math.round(active / total * 100)}%)` : ''), '#4ade80'],
+                ['💤', 'طلاب بدون نشاط', fmt(total - active), '#f87171']
+            ].map(a => `<div class="ldx-stat" style="--c:${a[3]}"><div class="ldx-ico">${a[0]}</div><div><b style="font-size:1.4rem">${a[2]}</b><span>${a[1]}</span></div></div>`).join('');
+            const board = (title, key) => {
+                const list = allStudents.filter(s => (s[key] || 0) > 0).sort((a, b) => (b[key] || 0) - (a[key] || 0)).slice(0, 5);
+                return `<div class="ldx-panel"><h3>${title}</h3>${list.length ? list.map((s, i) => miniRow(s, i, `<span class="ldx-val">${fmt(s[key])}</span>`)).join('') : emptyMsg}</div>`;
+            };
+            $('ldxBoards').innerHTML = board('🧠 اختبارات المستوى', 'levelTests') + board('🎯 التحديات', 'quizzes') + board('📅 الحجوزات', 'bookings');
+            const buckets = {};
+            allStudents.forEach(s => { const l = computeLevel(s.points || 0).name; buckets[l] = (buckets[l] || 0) + 1; });
+            const mx = Math.max(1, ...Object.values(buckets));
+            const colors = ['#94a3b8', '#38bdf8', '#4ade80', '#facc15', '#EA6113', '#C77DFF'];
+            $('ldxLevels').innerHTML = LEVEL_NAMES.map((n, i) => barRow(n, buckets[n] || 0, mx, colors[i])).join('');
         }
 
         window.setAdminFilter = function(mode) {
             adminFilterMode = mode;
-            ['Points', 'Newest', 'Name'].forEach(m => {
-                document.getElementById('adminFilter' + m).classList.toggle('on', m.toLowerCase() === mode);
-            });
+            ['Points', 'Newest', 'Name'].forEach(m => { $('adminFilter' + m).classList.toggle('on', m.toLowerCase() === mode); });
             renderLeaderStudents();
         };
         window.toggleStudentRow = function(id) {
@@ -9686,18 +9945,17 @@
         };
 
         window.renderLeaderStudents = function() {
-            const q = (document.getElementById('adminStudentSearch').value || '').trim().toLowerCase();
+            const q = ($('adminStudentSearch').value || '').trim().toLowerCase();
             let filtered = allStudents.filter(s => !q || (s.name || '').toLowerCase().includes(q) || (s.email || '').toLowerCase().includes(q));
-            const ms = x => (x.createdAt && x.createdAt.toMillis ? x.createdAt.toMillis() : 0);
-            if (adminFilterMode === 'newest') filtered.sort((a, b) => ms(b) - ms(a));
+            if (adminFilterMode === 'newest') filtered.sort((a, b) => msOf(b) - msOf(a));
             else if (adminFilterMode === 'name') filtered.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'ar'));
             else filtered.sort((a, b) => (b.points || 0) - (a.points || 0));
 
             const rankOf = {};
             allStudents.slice().sort((a, b) => (b.points || 0) - (a.points || 0)).forEach((s, i) => { rankOf[s.id] = i + 1; });
 
-            document.getElementById('adminStudentCount').textContent = q ? `${filtered.length} نتيجة من ${allStudents.length} طالب` : `${allStudents.length} طالب`;
-            const list = document.getElementById('adminStudentsList');
+            $('adminStudentCount').textContent = q ? `${filtered.length} نتيجة من ${allStudents.length} طالب` : `${allStudents.length} طالب`;
+            const list = $('adminStudentsList');
             if (!filtered.length) {
                 list.innerHTML = `<div class="ld-empty">${allStudents.length ? 'مفيش طالب مطابق للبحث. جرّب اسم أو إيميل تاني.' : 'لسه مفيش طلاب مسجلين.'}</div>`;
                 return;
@@ -9706,14 +9964,14 @@
                 const id = escapeHTML(s.id);
                 const open = s.id === openStudentId;
                 const lvl = computeLevel(s.points || 0);
-                const initial = (s.name || s.email || '?').trim().charAt(0).toUpperCase();
                 const rewards = (s.rewards || []).map(r => `<span class="reward-chip">🏅 ${escapeHTML(r)}</span>`).join('') || '<span class="ld-muted">لسه معندوش مكافآت</span>';
+                const joined = msOf(s) ? new Date(msOf(s)).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', year: 'numeric' }) : '—';
                 return `
                 <div class="ld-item${open ? ' open' : ''}">
                     <div class="ld-row">
                         <button class="ld-main" onclick="toggleStudentRow('${id}')" aria-expanded="${open}">
                             <span class="ld-rank">${adminFilterMode === 'points' ? rankOf[s.id] : ''}</span>
-                            <span class="ld-avatar">${escapeHTML(initial)}</span>
+                            <span class="ld-avatar">${initialOf(s)}</span>
                             <span class="ld-info">
                                 <span class="ld-name">${escapeHTML(s.name || 'بدون اسم')}${s.role === 'admin' ? '<em class="ld-tag">أدمن</em>' : ''}</span>
                                 <span class="ld-mail">${escapeHTML(s.email || '')}</span>
@@ -9725,6 +9983,7 @@
                     </div>
                     <div class="ld-detail">
                         <div class="ld-facts">
+                            <span>تاريخ التسجيل<b>${joined}</b></span>
                             <span>اختبارات المستوى<b>${s.levelTests || 0}</b></span>
                             <span>التحديات<b>${s.quizzes || 0}</b></span>
                             <span>الحجوزات<b>${s.bookings || 0}</b></span>
@@ -9745,9 +10004,136 @@
             }).join('');
         };
 
+        // ── Videos management (stored in localStorage, same key the site reads) ──
+        let ldxVidTabKey = 'preparatory', ldxEditIdx = -1;
+        const LDX_VID_RE = /^[A-Za-z0-9_-]{11}$/;
+        const saveVideos = () => localStorage.setItem('leaderVideosData', JSON.stringify({ preparatory: videosData.preparatory, secondary: videosData.secondary }));
+        window.ldxVidTab = function(tab) { ldxVidTabKey = tab; ldxVidCancel(); renderVideosAdmin(); };
+        function renderVideosAdmin() {
+            $('ldxTabPrep').classList.toggle('on', ldxVidTabKey === 'preparatory');
+            $('ldxTabSec').classList.toggle('on', ldxVidTabKey === 'secondary');
+            const vids = videosData[ldxVidTabKey] || [];
+            $('ldxVidCount').textContent = `${vids.length} فيديو`;
+            $('ldxVidList').innerHTML = vids.length ? vids.map((v, i) => {
+                const att = getAttempts(v.id), locked = att.used >= MAX_ATTEMPTS, vid = escapeHTML(v.id);
+                return `<div class="ldx-vid${i === ldxEditIdx ? ' editing' : ''}">
+                    <img class="ldx-thumb" loading="lazy" alt="" src="https://img.youtube.com/vi/${vid}/mqdefault.jpg" onerror="this.style.visibility='hidden'">
+                    <div class="ld-info"><b>${escapeHTML(v.title)}</b>
+                        <div class="ldx-meta"><span class="ldx-chip">${vid}</span><span class="ldx-chip code">🔑 ${escapeHTML(v.code || '')}</span>
+                        ${locked ? `<button type="button" class="ldx-chip bad" onclick="ldxUnlock('${vid}')">🔓 فك الحظر</button>` : `<span class="ldx-chip ok">${MAX_ATTEMPTS - att.used} مشاهدة متبقية</span>`}</div></div>
+                    <div class="ldx-acts">
+                        <button class="ld-btn" onclick="ldxMoveVid(${i},-1)" title="لفوق" ${i === 0 ? 'disabled' : ''}>↑</button>
+                        <button class="ld-btn" onclick="ldxMoveVid(${i},1)" title="لتحت" ${i === vids.length - 1 ? 'disabled' : ''}>↓</button>
+                        <button class="ld-btn" onclick="ldxEditVid(${i})">✏️ تعديل</button>
+                        <button class="ld-btn ld-danger" onclick="ldxDelVid(${i})">🗑️</button>
+                    </div></div>`;
+            }).join('') : '<div class="ld-empty">لا يوجد فيديوهات في القسم ده حتى الآن</div>';
+        }
+        window.ldxEditVid = function(i) {
+            const v = videosData[ldxVidTabKey][i]; if (!v) return;
+            ldxEditIdx = i;
+            $('ldxVidId').value = v.id; $('ldxVidTitle').value = v.title; $('ldxVidCode').value = v.code || '';
+            $('ldxVidFormTitle').textContent = '✏️ تعديل الفيديو';
+            $('ldxVidSubmit').textContent = '💾 حفظ التعديل'; $('ldxVidCancel').style.display = '';
+            renderVideosAdmin(); $('ldxVidId').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
+        window.ldxVidCancel = function() {
+            ldxEditIdx = -1;
+            ['ldxVidId', 'ldxVidTitle', 'ldxVidCode'].forEach(id => $(id).value = '');
+            $('ldxVidFormTitle').textContent = '➕ إضافة فيديو جديد';
+            $('ldxVidSubmit').textContent = '➕ إضافة الفيديو'; $('ldxVidCancel').style.display = 'none';
+            renderVideosAdmin();
+        };
+        window.ldxVidSubmit = function() {
+            const raw = $('ldxVidId').value.trim(), title = $('ldxVidTitle').value.trim(), code = $('ldxVidCode').value.trim();
+            if (!raw || !title || !code) { adminToast('ادخل الـ ID والعنوان والكود', 'err'); return; }
+            const m = raw.match(/(?:v=|youtu\.be\/|embed\/|shorts\/|live\/)([A-Za-z0-9_-]{11})/);
+            const id = m ? m[1] : raw;
+            if (!LDX_VID_RE.test(id)) { adminToast('الـ ID أو الرابط غير صحيح (لازم 11 حرف)', 'err'); return; }
+            const editing = ldxEditIdx >= 0;
+            const dup = ['preparatory', 'secondary'].some(k => videosData[k].some((v, i) => v.id === id && !(editing && k === ldxVidTabKey && i === ldxEditIdx)));
+            if (dup) { adminToast('الفيديو ده مضاف قبل كده', 'err'); return; }
+            const item = { id, title, code };
+            if (editing) videosData[ldxVidTabKey][ldxEditIdx] = item; else videosData[ldxVidTabKey].push(item);
+            saveVideos(); ldxVidCancel(); renderOverview();
+            adminToast(editing ? 'تم حفظ التعديل' : 'تمت إضافة الفيديو', 'ok');
+            if (typeof playSuccess === 'function') playSuccess();
+        };
+        window.ldxDelVid = function(i) {
+            const v = videosData[ldxVidTabKey][i]; if (!v) return;
+            if (!confirm(`حذف الفيديو "${v.title}"؟`)) return;
+            videosData[ldxVidTabKey].splice(i, 1); saveVideos(); ldxVidCancel(); renderOverview();
+            adminToast('تم حذف الفيديو', 'ok');
+        };
+        window.ldxMoveVid = function(i, d) {
+            const a = videosData[ldxVidTabKey], j = i + d; if (j < 0 || j >= a.length) return;
+            [a[i], a[j]] = [a[j], a[i]]; saveVideos(); ldxEditIdx = -1; renderVideosAdmin();
+        };
+        window.ldxUnlock = function(id) { localStorage.removeItem('vidAttempts_' + id); renderVideosAdmin(); adminToast('تم فك الحظر عن الفيديو', 'ok'); };
+        window.ldxResetAllAttempts = function() {
+            if (!confirm('فك الحظر عن كل الفيديوهات على الجهاز ده؟')) return;
+            [...videosData.preparatory, ...videosData.secondary].forEach(v => localStorage.removeItem('vidAttempts_' + v.id));
+            adminToast('تم فك الحظر عن كل الفيديوهات', 'ok');
+        };
+
+        // ── Settings & data tools ──
+        function download(name, mime, text) {
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([text], { type: mime }));
+            a.download = name; document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+        }
+        window.ldxExportCSV = function() {
+            if (!allStudents.length) { adminToast('مفيش بيانات للتصدير', 'err'); return; }
+            const esc = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+            const rows = [['الاسم', 'الإيميل', 'النقاط', 'المستوى', 'اختبارات المستوى', 'التحديات', 'الحجوزات', 'المكافآت', 'تاريخ التسجيل']];
+            allStudents.forEach(s => rows.push([s.name, s.email, s.points || 0, computeLevel(s.points || 0).level, s.levelTests || 0, s.quizzes || 0, s.bookings || 0, (s.rewards || []).join(' | '), msOf(s) ? new Date(msOf(s)).toISOString().slice(0, 10) : '']));
+            download('leader-students.csv', 'text/csv;charset=utf-8', '\ufeff' + rows.map(r => r.map(esc).join(',')).join('\n'));
+            adminToast('تم تصدير بيانات الطلاب', 'ok');
+        };
+        window.ldxBackupVideos = function() { download('leader-videos-backup.json', 'application/json', JSON.stringify(videosData, null, 2)); adminToast('تم تنزيل النسخة الاحتياطية', 'ok'); };
+        window.ldxRestoreVideos = function(input) {
+            const f = input.files && input.files[0]; if (!f) return;
+            const r = new FileReader();
+            r.onload = () => {
+                try {
+                    const d = JSON.parse(r.result);
+                    const ok = a => Array.isArray(a) && a.every(v => v && LDX_VID_RE.test(String(v.id)) && v.title);
+                    if (!ok(d.preparatory || []) || !ok(d.secondary || [])) throw 0;
+                    if (!confirm('ده هيستبدل قائمة الفيديوهات الحالية. تكمل؟')) { input.value = ''; return; }
+                    videosData.preparatory = d.preparatory || []; videosData.secondary = d.secondary || [];
+                    saveVideos(); renderOverview(); renderVideosAdmin(); adminToast('تم استرجاع الفيديوهات', 'ok');
+                } catch (e) { adminToast('الملف غير صالح', 'err'); }
+                input.value = '';
+            };
+            r.onerror = () => { adminToast('تعذر قراءة الملف', 'err'); input.value = ''; };
+            r.readAsText(f);
+        };
+        function loadAdminsList() {
+            const box = $('ldxAdmins');
+            db.collection('admins').get().then(qs => {
+                const me = ((currentUser && currentUser.email) || '').toLowerCase();
+                box.className = ''; box.style.margin = '0';
+                box.innerHTML = qs.docs.map(d => `<div class="ldx-row"><div dir="ltr" style="text-align:right">${escapeHTML(d.id)}</div>${d.id === me ? '<span class="ldx-chip ok">أنت</span>' : `<button class="ld-btn ld-danger" data-mail="${escapeHTML(d.id)}" onclick="ldxRemoveAdmin(this.dataset.mail)">إزالة</button>`}</div>`).join('') || '<div class="ld-empty">لا يوجد مشرفون</div>';
+            }).catch(() => { box.textContent = 'تعذر تحميل المشرفين — راجع قواعد Firestore'; });
+        }
+        window.ldxAddAdmin = function() {
+            const el = $('ldxNewAdmin'), mail = el.value.trim().toLowerCase();
+            if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)) { adminToast('اكتب إيميل صحيح', 'err'); return; }
+            db.collection('admins').doc(mail).set({ addedAt: firebase.firestore.FieldValue.serverTimestamp() })
+                .then(() => { el.value = ''; adminToast('تمت إضافة المشرف', 'ok'); loadAdminsList(); })
+                .catch(() => adminToast('تعذر إضافة المشرف — راجع قواعد Firestore', 'err'));
+        };
+        window.ldxRemoveAdmin = function(mail) {
+            if (!confirm(`إزالة ${mail} من المشرفين؟`)) return;
+            db.collection('admins').doc(mail).delete()
+                .then(() => { adminToast('تمت إزالة المشرف', 'ok'); loadAdminsList(); })
+                .catch(() => adminToast('تعذر إزالة المشرف — راجع قواعد Firestore', 'err'));
+        };
+
         let ldToastTimer = null;
         function adminToast(msg, kind) {
-            const el = document.getElementById('ldToast');
+            const el = $('ldToast');
             el.textContent = msg;
             el.className = 'ld-toast show ' + (kind || 'ok');
             clearTimeout(ldToastTimer);
@@ -9756,20 +10142,28 @@
         function studentName(uid) { const s = allStudents.find(x => x.id === uid); return (s && s.name) || 'الطالب'; }
 
         function adminApply(uid, n) {
-            return db.collection('students').doc(uid).update({ points: firebase.firestore.FieldValue.increment(n) })
-                .then(() => adminToast(`${n > 0 ? 'تمت إضافة' : 'تم خصم'} ${Math.abs(n)} نقطة ${n > 0 ? 'إلى' : 'من'} ${studentName(uid)}`, 'ok'))
-                .catch(() => adminToast('تعذر تعديل النقاط — راجع قواعد Firestore', 'err'));
+            const ref = db.collection('students').doc(uid);
+            let applied = n;
+            return db.runTransaction(async tx => {
+                const cur = (await tx.get(ref)).data() || {};
+                const now = cur.points || 0, next = Math.max(0, now + n);
+                applied = next - now;
+                tx.update(ref, { points: next });
+            }).then(() => {
+                if (!applied) adminToast(`${studentName(uid)} رصيده 0 بالفعل`, 'err');
+                else adminToast(`${applied > 0 ? 'تمت إضافة' : 'تم خصم'} ${Math.abs(applied)} نقطة ${applied > 0 ? 'إلى' : 'من'} ${studentName(uid)}`, 'ok');
+            }).catch(() => adminToast('تعذر تعديل النقاط — راجع قواعد Firestore', 'err'));
         }
         window.adminAddPoints = function(uid, amount) { adminApply(uid, amount); };
         window.adminApplyCustom = function(uid) {
-            const el = document.getElementById('ldPts_' + uid);
+            const el = $('ldPts_' + uid);
             const n = parseInt(el.value, 10);
-            if (!n) { adminToast('اكتب عدد نقاط صحيح', 'err'); return; }
+            if (!Number.isFinite(n) || !n) { adminToast('اكتب عدد نقاط صحيح', 'err'); return; }
             el.value = '';
             adminApply(uid, n);
         };
         window.adminGrantReward = function(uid) {
-            const el = document.getElementById('ldRew_' + uid);
+            const el = $('ldRew_' + uid);
             const v = (el.value || '').trim();
             if (!v) { adminToast('اكتب اسم المكافأة', 'err'); return; }
             el.value = '';
