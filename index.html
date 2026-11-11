@@ -4466,6 +4466,140 @@
         button.ldx-chip { font:inherit; font-size:.72rem; }
         .ldx-chip.bad:focus-visible { outline:2px solid #C77DFF; outline-offset:2px; }
 
+        /* ================================================================
+           EXAMS & GRADES  (الامتحانات والدرجات) — منقولة من منصة الفارس
+           ================================================================ */
+        .lex-track-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,320px)); justify-content:center; gap:1.5rem; max-width:900px; margin:0 auto; }
+        .lex-track-card { background:rgba(60,9,108,0.4); backdrop-filter:blur(14px); border:1px solid rgba(199,125,255,0.2); border-radius:22px; padding:2.2rem 1.6rem; text-align:center; cursor:pointer;
+            transition:all .35s cubic-bezier(0.22,1,0.36,1); position:relative; overflow:hidden; }
+        .lex-track-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--bright-purple),var(--accent-orange)); }
+        .lex-track-card:hover { transform:translateY(-8px); border-color:rgba(199,125,255,0.5); box-shadow:0 20px 50px rgba(123,44,191,0.3); }
+        .lex-track-ico { width:64px; height:64px; margin:0 auto 1rem; border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:1.9rem;
+            background:linear-gradient(135deg,rgba(123,44,191,0.55),rgba(234,97,19,0.35)); border:1px solid rgba(199,125,255,0.3); }
+        .lex-track-card strong { display:block; font-size:1.1rem; color:#fff; margin-bottom:.4rem; }
+        .lex-track-card span.lex-sub { font-size:.85rem; color:var(--text-muted); }
+
+        .lex-overlay { position:fixed; inset:0; z-index:4500; background:#080016; overflow-y:auto; display:none; -webkit-overflow-scrolling:touch; }
+        .lex-overlay.open { display:block; animation:lexFade .25s ease-out; }
+        @keyframes lexFade { from{opacity:0} to{opacity:1} }
+        .lex-top { position:sticky; top:0; z-index:3; display:flex; align-items:center; gap:1rem; padding:.9rem 1.2rem; background:rgba(16,0,43,0.94); backdrop-filter:blur(10px); border-bottom:1px solid rgba(199,125,255,0.2); }
+        .lex-top > div { flex:1; min-width:0; }
+        .lex-top h2 { font-size:1.2rem; font-weight:800; color:#fff; line-height:1.3; }
+        .lex-top p { font-size:.8rem; color:var(--text-muted); }
+        .lex-top .lex-emoji { font-size:1.6rem; flex:none; }
+        .lex-x { width:40px; height:40px; flex:none; border-radius:50%; border:1px solid rgba(199,125,255,0.3); background:rgba(199,125,255,0.1); color:var(--light-purple); cursor:pointer; font-size:1rem; transition:background .2s; }
+        .lex-x:hover { background:rgba(199,125,255,0.25); }
+        .lex-body { max-width:760px; margin:0 auto; padding:1.4rem 1.2rem 3rem; }
+        .lex-grade-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1rem; }
+        .lex-grade { background:rgba(60,9,108,0.45); border:1px solid rgba(199,125,255,0.2); border-radius:18px; padding:1.4rem 1rem; text-align:center; cursor:pointer; transition:all .3s cubic-bezier(0.22,1,0.36,1); }
+        .lex-grade:hover { transform:translateY(-5px); border-color:rgba(199,125,255,0.5); box-shadow:0 14px 40px rgba(123,44,191,0.25); }
+        .lex-grade i { font-style:normal; display:block; font-size:2rem; font-weight:900; background:linear-gradient(135deg,var(--light-purple),var(--accent-orange)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .lex-grade b { display:block; margin-top:.2rem; font-size:.95rem; color:var(--text-light); }
+        .lex-grade small { display:block; color:var(--text-muted); font-size:.75rem; margin-top:.15rem; }
+        .lex-wide-btn { width:100%; margin-top:1.2rem; display:flex; align-items:center; justify-content:center; gap:.5rem; padding:.9rem 1rem; border-radius:14px; cursor:pointer; font-family:inherit; font-size:1rem; font-weight:700;
+            color:#fff; border:1px solid rgba(199,125,255,0.35); background:rgba(123,44,191,0.25); transition:all .2s; }
+        .lex-wide-btn:hover { background:rgba(123,44,191,0.45); }
+
+        .lex-item { display:flex; align-items:center; gap:1rem; padding:1rem 1.1rem; margin-bottom:.8rem; border-radius:16px; cursor:pointer; background:rgba(60,9,108,0.4); border:1px solid rgba(199,125,255,0.2); transition:all .25s; }
+        .lex-item:hover { transform:translateX(-4px); border-color:rgba(199,125,255,0.5); background:rgba(60,9,108,0.6); }
+        .lex-item-ico { width:48px; height:48px; flex:none; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; background:linear-gradient(135deg,rgba(123,44,191,0.5),rgba(234,97,19,0.3)); }
+        .lex-item-info { flex:1; min-width:0; }
+        .lex-item-title { font-weight:800; color:#fff; font-size:1rem; }
+        .lex-item-desc { font-size:.82rem; color:var(--text-muted); margin-top:.15rem; }
+        .lex-item-note { font-size:.78rem; margin-top:.3rem; }
+        .lex-item-arrow { color:var(--light-purple); }
+        .lex-empty { text-align:center; padding:3rem 1rem; color:var(--text-muted); line-height:2; }
+
+        .lex-card { background:rgba(60,9,108,0.4); border:1px solid rgba(199,125,255,0.25); border-radius:22px; padding:2rem 1.5rem; text-align:center; }
+        .lex-card .lex-big { font-size:2.8rem; }
+        .lex-card h3 { color:#fff; font-size:1.4rem; margin:.4rem 0; }
+        .lex-card p.lex-desc { color:var(--text-muted); font-size:.92rem; margin-bottom:1rem; }
+        .lex-meta { display:flex; flex-direction:column; gap:.5rem; text-align:right; margin:1rem 0; }
+        .lex-meta div { padding:.6rem .9rem; border-radius:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(199,125,255,0.15); font-size:.88rem; color:var(--text-light); }
+        .lex-note { margin:.8rem 0; padding:.7rem .9rem; border-radius:12px; font-size:.85rem; background:rgba(234,97,19,0.12); border:1px solid rgba(234,97,19,0.35); color:#ffc9a3; }
+        .lex-btn { display:block; width:100%; padding:.9rem 1rem; margin-top:.8rem; border:none; border-radius:14px; cursor:pointer; font-family:inherit; font-size:1.02rem; font-weight:800; color:#fff;
+            background:linear-gradient(135deg,var(--bright-purple),var(--accent-orange)); transition:opacity .2s, transform .2s; }
+        .lex-btn:hover:not(:disabled) { opacity:.9; transform:translateY(-2px); }
+        .lex-btn:disabled { opacity:.4; cursor:not-allowed; }
+        .lex-btn.outline { background:transparent; border:1px solid rgba(199,125,255,0.45); color:var(--light-accent); }
+
+        .lex-take-bar { position:sticky; top:0; z-index:3; display:flex; align-items:center; justify-content:space-between; padding:.9rem 1.2rem; background:rgba(16,0,43,0.96); border-bottom:1px solid rgba(199,125,255,0.2); }
+        .lex-timer { font-size:1.4rem; font-weight:900; font-variant-numeric:tabular-nums; color:#4ade80; direction:ltr; }
+        .lex-timer.low { color:#ff6b6b; animation:lexPulse 1s infinite; }
+        @keyframes lexPulse { 50% { opacity:.45; } }
+        .lex-prog-txt { font-size:.9rem; color:var(--text-muted); font-weight:700; }
+        .lex-prog-track { height:5px; background:rgba(255,255,255,0.1); }
+        .lex-prog-fill { height:100%; background:linear-gradient(90deg,var(--bright-purple),var(--accent-orange)); transition:width .3s; }
+        .lex-q { max-width:760px; margin:0 auto; padding:1.5rem 1.2rem 3rem; }
+        .lex-q-img { margin-bottom:1rem; text-align:center; }
+        .lex-q-img img { max-width:100%; max-height:320px; border-radius:14px; background:#fff; }
+        .lex-q-text { font-size:1.2rem; font-weight:700; line-height:1.9; color:#fff; margin-bottom:1.2rem; white-space:pre-wrap; }
+        .lex-opt { display:flex; align-items:center; gap:.8rem; padding:.9rem 1rem; margin-bottom:.7rem; border-radius:14px; cursor:pointer; background:rgba(60,9,108,0.4); border:1.5px solid rgba(199,125,255,0.2); transition:all .2s; color:var(--text-light); }
+        .lex-opt:hover { border-color:rgba(199,125,255,0.55); }
+        .lex-opt.selected { border-color:var(--accent-orange); background:rgba(234,97,19,0.16); }
+        .lex-opt-l { width:34px; height:34px; flex:none; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; background:rgba(199,125,255,0.18); color:var(--light-accent); }
+        .lex-opt.selected .lex-opt-l { background:var(--accent-orange); color:#fff; }
+        .lex-nav { display:flex; gap:.7rem; margin-top:1.4rem; }
+        .lex-nav button { flex:1; padding:.85rem; border-radius:14px; border:1px solid rgba(199,125,255,0.35); background:rgba(255,255,255,0.05); color:#fff; font-family:inherit; font-size:1rem; font-weight:700; cursor:pointer; }
+        .lex-nav button:disabled { opacity:.35; cursor:not-allowed; }
+        .lex-nav button.primary { background:var(--bright-purple); border-color:var(--bright-purple); }
+        .lex-nav button.finish { background:linear-gradient(135deg,#16a34a,#4ade80); border:none; color:#06260f; }
+
+        .lex-score { font-size:3rem; font-weight:900; color:#fff; direction:ltr; }
+        .lex-pct { font-size:1.6rem; font-weight:800; background:linear-gradient(135deg,var(--light-purple),var(--accent-orange)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .lex-msg { margin:1rem 0; color:var(--text-muted); line-height:1.8; }
+        .lex-rv { padding:1.1rem; margin-bottom:1rem; border-radius:16px; background:rgba(60,9,108,0.4); border:1px solid rgba(199,125,255,0.2); }
+        .lex-rv-n { font-size:.8rem; font-weight:800; color:var(--light-purple); margin-bottom:.5rem; }
+        .lex-rv-q { color:#fff; font-weight:700; line-height:1.8; margin-bottom:.7rem; }
+        .lex-rv-o { display:flex; align-items:center; flex-wrap:wrap; gap:.6rem; padding:.6rem .8rem; margin-bottom:.4rem; border-radius:10px; border:1px solid rgba(199,125,255,0.15); font-size:.9rem; color:var(--text-light); }
+        .lex-rv-o.correct { border-color:rgba(74,222,128,0.6); background:rgba(74,222,128,0.1); }
+        .lex-rv-o.wrong { border-color:rgba(255,107,107,0.6); background:rgba(255,107,107,0.1); }
+        .lex-tag { font-size:.72rem; font-weight:700; margin-right:auto; color:#86efac; }
+        .lex-tag.bad { color:#ff9b9b; }
+        .lex-grade-row { display:flex; align-items:center; gap:.8rem; padding:.75rem .9rem; margin-bottom:.5rem; border-radius:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(199,125,255,0.18); }
+        .lex-grade-row .t { flex:1; min-width:0; font-weight:700; color:#fff; font-size:.9rem; }
+        .lex-grade-row .t small { display:block; color:var(--text-muted); font-weight:500; font-size:.74rem; }
+        .lex-pill { font-weight:800; font-size:.85rem; padding:.25rem .7rem; border-radius:20px; direction:ltr; white-space:nowrap; border:1px solid; }
+        .lex-pill.hi { color:#86efac; border-color:rgba(74,222,128,0.5); background:rgba(74,222,128,0.1); }
+        .lex-pill.mid { color:#fcd34d; border-color:rgba(250,204,21,0.5); background:rgba(250,204,21,0.1); }
+        .lex-pill.lo { color:#ff9b9b; border-color:rgba(255,107,107,0.5); background:rgba(255,107,107,0.1); }
+        #lexToast { position:fixed; bottom:1.4rem; left:50%; transform:translate(-50%,20px); opacity:0; pointer-events:none; z-index:10700; background:#1d0545; color:#fff; border:1px solid rgba(199,125,255,0.5);
+            border-radius:12px; padding:.65rem 1.1rem; font-size:.9rem; font-weight:700; transition:all .25s; max-width:90vw; text-align:center; }
+        #lexToast.show { opacity:1; transform:translate(-50%,0); }
+
+        /* ---- لوحة التحكم: تاب الامتحانات ---- */
+        .lex-ad-row { display:flex; align-items:center; gap:.8rem; padding:.8rem .9rem; margin-bottom:.55rem; border:1px solid var(--ld-line); border-radius:14px; background:var(--ldx-surface); flex-wrap:wrap; }
+        .lex-ad-row.off { opacity:.6; }
+        .lex-ad-main { flex:1 1 240px; min-width:0; }
+        .lex-ad-main b { display:block; color:#fff; font-size:.95rem; line-height:1.5; }
+        .lex-ad-chips { display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.35rem; }
+        .lex-ad-chips .ldx-chip { direction:rtl; font-size:.72rem; line-height:1.6; }
+        .lex-ad-label { display:block; font-size:.78rem; color:var(--ld-mute); margin:.2rem 0 .25rem; font-weight:700; }
+        .lex-ad-check { display:flex; align-items:center; gap:.5rem; font-size:.86rem; color:#d9ccf0; cursor:pointer; padding:.3rem 0; }
+        .lex-ad-check input { width:18px; height:18px; accent-color:#7B2CBF; }
+        .lex-ad-q { position:relative; padding:.8rem .9rem; margin-bottom:.55rem; border:1px solid var(--ld-line); border-radius:12px; background:rgba(255,255,255,0.03); }
+        .lex-ad-q .qt { color:#fff; font-weight:700; font-size:.9rem; line-height:1.7; padding-left:5.5rem; }
+        .lex-ad-q img { max-width:100%; max-height:150px; border-radius:8px; margin-bottom:.5rem; display:block; background:#fff; }
+        .lex-ad-q .qo { display:grid; grid-template-columns:1fr 1fr; gap:.35rem; margin-top:.5rem; }
+        .lex-ad-q .qo div { font-size:.8rem; padding:.3rem .6rem; border-radius:8px; border:1px solid var(--ld-line); color:#d9ccf0; }
+        .lex-ad-q .qo div.ok { border-color:rgba(74,222,128,0.6); background:rgba(74,222,128,0.1); color:#bbf7d0; }
+        .lex-ad-q .qa { position:absolute; top:.55rem; left:.6rem; display:flex; gap:.25rem; }
+        .lex-ad-q .qa .ld-btn { padding:.25rem .5rem; font-size:.8rem; }
+        .lex-drop { border:2px dashed var(--ld-line); border-radius:12px; padding:1rem; text-align:center; cursor:pointer; color:var(--ld-mute); font-size:.82rem; transition:all .2s; }
+        .lex-drop:hover, .lex-drop.drag { border-color:#C77DFF; background:rgba(199,125,255,0.08); }
+        .lex-drop.has-img .lex-drop-empty { display:none; }
+        .lex-drop .lex-drop-prev { display:none; }
+        .lex-drop.has-img .lex-drop-prev { display:block; }
+        .lex-drop-prev img { max-width:100%; max-height:170px; border-radius:8px; background:#fff; }
+        .lex-drop-prev small { display:block; margin:.4rem 0; color:var(--ld-mute); }
+        .lex-bulk-hint { white-space:pre-wrap; font-size:.78rem; color:#ffb37a; background:rgba(234,97,19,0.08); border:1px dashed rgba(234,97,19,0.4); border-radius:10px; padding:.6rem .8rem; margin:.5rem 0; line-height:1.8; }
+        .lex-bulk-res { white-space:pre-wrap; font-size:.82rem; margin-top:.5rem; }
+        .lex-bulk-res.ok { color:#86efac; } .lex-bulk-res.err { color:#ff9b9b; }
+        .lex-res-row { display:flex; align-items:center; gap:.8rem; padding:.7rem .9rem; margin-bottom:.45rem; border:1px solid var(--ld-line); border-radius:12px; background:var(--ldx-surface); }
+        .lex-res-row .i { flex:1; min-width:0; color:#fff; font-size:.88rem; line-height:1.7; }
+        .lex-res-row .i small { display:block; color:var(--ld-mute); font-size:.76rem; }
+        @media (max-width:760px) { .lex-ad-q .qo { grid-template-columns:1fr; } .lex-ad-q .qt { padding-left:0; padding-top:1.8rem; } .lex-ad-q .qa { top:.4rem; } }
+
     </style>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -4556,6 +4690,10 @@
             <li><a href="#testimonials">
                 <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
                 آراء الطلاب
+            </a></li>
+            <li><a href="#tracking">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20V13"/><path d="M4 20h16"/></svg></span>
+                متابعة الطلاب
             </a></li>
             <li><a href="#" id="navAccountLink" onclick="handleAccountNavClick(); return false;">
                 <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
@@ -4800,6 +4938,19 @@
     </div>
 
 
+
+    <!-- ===== STUDENT TRACKING (متابعة الطلاب) ===== -->
+    <section id="tracking" class="section" style="text-align:center">
+        <h2 class="section-title">متابعة الطلاب 📊</h2>
+        <p style="color:var(--text-muted);margin:-1.5rem auto 2.5rem;font-size:0.95rem;max-width:520px;line-height:1.9">تابع أداءك لحظة بلحظة — اختبارات ونتائج في مكان واحد</p>
+        <div class="lex-track-grid">
+            <div class="lex-track-card slide-up" onclick="lexOpenExams()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')lexOpenExams()">
+                <div class="lex-track-ico">📊</div>
+                <strong>الامتحانات والدرجات</strong>
+                <span class="lex-sub">متابعة نتائج كل امتحان</span>
+            </div>
+        </div>
+    </section>
 
     <!-- ===== ENGLISH LEVEL TEST SECTION ===== -->
     <div class="dual-cards-section">
@@ -5464,6 +5615,9 @@
                     </div>
                 </div>
 
+                <div class="dash-section-title">📊 درجات الامتحانات</div>
+                <div id="maExamGrades" style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.4rem;"><div style="color:#a9a3c2;font-size:.85rem;">جاري التحميل...</div></div>
+
                 <div class="dash-section-title">📥 ملفات وامتحانات</div>
                 <div id="maFilesList" style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.4rem;">
                     <div style="color:#a9a3c2;font-size:.85rem;">هيظهر هنا أي امتحانات أو ملفات يرفعها المدرس</div>
@@ -5473,6 +5627,91 @@
             </div>
         </div>
     </div>
+
+    <!-- ===== EXAMS: STUDENT OVERLAYS ===== -->
+    <div class="lex-overlay" id="lexGradePage">
+        <div class="lex-top">
+            <button class="lex-x" onclick="lexClose('lexGradePage')" aria-label="إغلاق">✕</button>
+            <div><h2>الامتحانات والدرجات</h2><p>اختار مرحلتك الدراسية الأول</p></div>
+            <span class="lex-emoji">📊</span>
+        </div>
+        <div class="lex-body">
+            <div class="lex-grade-grid" id="lexGradeGrid"></div>
+            <button class="lex-wide-btn" onclick="lexOpenMyGrades()">📋 درجاتي في الاختبارات</button>
+        </div>
+    </div>
+
+    <div class="lex-overlay" id="lexListPage">
+        <div class="lex-top">
+            <button class="lex-x" onclick="lexClose('lexListPage')" aria-label="رجوع">✕</button>
+            <div><h2>الامتحانات</h2><p id="lexListSub">اختر الاختبار اللي عايز تأديه</p></div>
+            <span class="lex-emoji">📝</span>
+        </div>
+        <div class="lex-body"><div id="lexListBox"><div class="lex-empty">جاري تحميل الاختبارات...</div></div></div>
+    </div>
+
+    <div class="lex-overlay" id="lexInfoPage">
+        <div class="lex-top">
+            <button class="lex-x" onclick="lexClose('lexInfoPage')" aria-label="رجوع">✕</button>
+            <div><h2>تفاصيل الاختبار</h2><p>منصة الليدر</p></div>
+            <span class="lex-emoji">📝</span>
+        </div>
+        <div class="lex-body" id="lexInfoBody"></div>
+    </div>
+
+    <div class="lex-overlay" id="lexTakePage">
+        <div class="lex-take-bar">
+            <div class="lex-timer" id="lexTimer">20:00</div>
+            <div class="lex-prog-txt" id="lexProgTxt">سؤال 1 من 10</div>
+        </div>
+        <div class="lex-prog-track"><div class="lex-prog-fill" id="lexProgFill" style="width:0%"></div></div>
+        <div class="lex-q">
+            <div class="lex-q-img" id="lexQImgWrap" style="display:none"><img id="lexQImg" alt="صورة السؤال"></div>
+            <div class="lex-q-text" id="lexQText" dir="auto"></div>
+            <div id="lexOpts"></div>
+            <div class="lex-nav">
+                <button id="lexPrev" onclick="lexPrev()">◀ السابق</button>
+                <button class="primary" id="lexNext" onclick="lexNext()">التالي ▶</button>
+                <button class="finish" id="lexFinish" onclick="lexConfirmFinish()" style="display:none">✅ إنهاء الاختبار</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="lex-overlay" id="lexResultPage">
+        <div class="lex-top">
+            <div><h2>نتيجة الاختبار</h2><p id="lexResSub"></p></div>
+            <span class="lex-emoji">🏆</span>
+        </div>
+        <div class="lex-body">
+            <div class="lex-card">
+                <div class="lex-big">🎉</div>
+                <div class="lex-score" id="lexResScore">0/0</div>
+                <div class="lex-pct" id="lexResPct">0%</div>
+                <div class="lex-msg" id="lexResMsg"></div>
+                <button class="lex-btn outline" id="lexReviewBtn" style="display:none" onclick="lexOpenReview()">📋 شوف الأسئلة اللي غلطت فيها</button>
+                <button class="lex-btn" onclick="lexCloseResult()">تمام، رجوع</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="lex-overlay" id="lexReviewPage" style="z-index:4600">
+        <div class="lex-top">
+            <button class="lex-x" onclick="lexClose('lexReviewPage')" aria-label="رجوع">✕</button>
+            <div><h2>مراجعة الأخطاء</h2><p>شوف الإجابة الصح لكل سؤال غلطت فيه</p></div>
+            <span class="lex-emoji">📋</span>
+        </div>
+        <div class="lex-body"><div id="lexReviewBox"></div></div>
+    </div>
+
+    <div class="lex-overlay" id="lexMyGradesPage" style="z-index:4550">
+        <div class="lex-top">
+            <button class="lex-x" onclick="lexClose('lexMyGradesPage')" aria-label="رجوع">✕</button>
+            <div><h2>درجاتي</h2><p>نتائج الاختبارات اللي أديتها</p></div>
+            <span class="lex-emoji">📋</span>
+        </div>
+        <div class="lex-body"><div id="lexMyGradesBox"></div></div>
+    </div>
+    <div id="lexToast" role="status"></div>
 
     <!-- ===== LEADER ADMIN DASHBOARD ===== -->
     <div id="leaderAdminOverlay" class="dash-overlay" role="dialog" aria-modal="true" aria-label="لوحة التحكم">
@@ -5484,6 +5723,8 @@
                     <button class="on" data-sec="overview" onclick="ldxGo('overview')"><i>📊</i><span>نظرة عامة</span></button>
                     <button data-sec="students" onclick="ldxGo('students')"><i>👥</i><span>الطلبة</span></button>
                     <button data-sec="videos" onclick="ldxGo('videos')"><i>🎬</i><span>الفيديوهات</span></button>
+                    <button data-sec="exams" onclick="ldxGo('exams')"><i>📝</i><span>الامتحانات</span></button>
+                    <button data-sec="examresults" onclick="ldxGo('examresults')"><i>🏅</i><span>الدرجات</span></button>
                     <button data-sec="activity" onclick="ldxGo('activity')"><i>⚡</i><span>نشاط الطلبة</span></button>
                     <button data-sec="settings" onclick="ldxGo('settings')"><i>⚙️</i><span>الإعدادات</span></button>
                 </nav>
@@ -5564,6 +5805,131 @@
                                 </div>
                             </div>
                         </div>
+                    </section>
+
+                    <!-- Exams (إدارة الاختبارات) -->
+                    <section class="ldx-sec" id="ldxSec-exams">
+                        <!-- قائمة الاختبارات -->
+                        <div id="lexAdList">
+                            <div class="ldx-tools">
+                                <select id="lexAdFilter" class="ld-input" style="flex:0 1 230px" onchange="lexAdRenderList()" aria-label="فلترة حسب المرحلة"></select>
+                                <span class="ld-count" id="lexAdCount" style="margin:0"></span>
+                                <button class="ld-btn ld-primary" style="margin-right:auto" onclick="lexAdToggleNew()">➕ اختبار جديد</button>
+                            </div>
+
+                            <div class="ldx-panel" id="lexAdNew" style="display:none;margin-bottom:1rem">
+                                <h3>➕ إضافة اختبار جديد</h3>
+                                <div class="ldx-form">
+                                    <input id="lexNewTitle" class="ld-input wide" placeholder="اسم الاختبار... مثال: اختبار على Unit 1">
+                                    <input id="lexNewDesc" class="ld-input wide" placeholder="وصف بسيط عن الاختبار...">
+                                    <input id="lexNewDur" class="ld-input" type="number" min="1" dir="ltr" placeholder="المدة بالدقايق (مثال: 20)">
+                                    <select id="lexNewGrade" class="ld-input"></select>
+                                    <label class="lex-ad-check wide"><input type="checkbox" id="lexNewSched" onchange="document.getElementById('lexNewSchedBox').style.display=this.checked?'grid':'none'"><span>⏰ جدولة الاختبار (يتفتح في يوم ووقت محددين وبعدها يتقفل تلقائي)</span></label>
+                                    <div class="wide ldx-form" id="lexNewSchedBox" style="display:none;grid-template-columns:repeat(3,1fr)">
+                                        <input id="lexNewDate" class="ld-input" type="date" dir="ltr">
+                                        <input id="lexNewFrom" class="ld-input" type="time" dir="ltr" title="من">
+                                        <input id="lexNewTo" class="ld-input" type="time" dir="ltr" title="إلى">
+                                    </div>
+                                    <div class="wide ldx-ctl-row" style="display:flex;gap:.5rem">
+                                        <button class="ld-btn ld-primary" style="flex:1;padding:.65rem" onclick="lexAdAddExam()">✅ إضافة الاختبار</button>
+                                        <button class="ld-btn" style="padding:.65rem 1.2rem" onclick="lexAdToggleNew()">إلغاء</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="lexAdExamList"><div class="ld-count">جاري التحميل...</div></div>
+                        </div>
+
+                        <!-- محرر اختبار واحد -->
+                        <div id="lexAdEditor" style="display:none">
+                            <div class="ldx-tools">
+                                <button class="ld-btn" onclick="lexAdBack()">↩ رجوع للاختبارات</button>
+                                <b id="lexEdName" style="color:#fff"></b>
+                            </div>
+
+                            <div class="ldx-panel">
+                                <h3>⚙️ إعدادات الاختبار</h3>
+                                <div class="ldx-form">
+                                    <input id="lexEdTitle" class="ld-input wide" placeholder="اسم الاختبار">
+                                    <input id="lexEdDesc" class="ld-input wide" placeholder="وصف الاختبار">
+                                    <input id="lexEdDur" class="ld-input" type="number" min="1" dir="ltr" placeholder="المدة بالدقايق">
+                                    <select id="lexEdGrade" class="ld-input"></select>
+                                    <label class="lex-ad-check wide"><input type="checkbox" id="lexEdActive"><span>الاختبار متاح للطلاب</span></label>
+                                    <label class="lex-ad-check wide"><input type="checkbox" id="lexEdSched" onchange="document.getElementById('lexEdSchedBox').style.display=this.checked?'grid':'none'"><span>⏰ جدولة الاختبار</span></label>
+                                    <div class="wide ldx-form" id="lexEdSchedBox" style="display:none;grid-template-columns:repeat(3,1fr)">
+                                        <input id="lexEdDate" class="ld-input" type="date" dir="ltr">
+                                        <input id="lexEdFrom" class="ld-input" type="time" dir="ltr">
+                                        <input id="lexEdTo" class="ld-input" type="time" dir="ltr">
+                                    </div>
+                                    <div class="wide ldx-ctl-row" style="display:flex;gap:.5rem">
+                                        <button class="ld-btn ld-primary" style="flex:1;padding:.65rem" onclick="lexAdSaveMeta()">💾 حفظ الإعدادات</button>
+                                        <button class="ld-btn ld-danger" style="padding:.65rem 1.2rem" onclick="lexAdDeleteExam()">🗑 حذف الاختبار</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ldx-h" style="margin-top:1.4rem">❓ الأسئلة <small id="lexQCount"></small></div>
+                            <div id="lexAdQList"><div class="ld-count">جاري التحميل...</div></div>
+
+                            <div class="ldx-panel" style="margin-top:1rem">
+                                <h3>➕ إضافة سؤال جديد</h3>
+                                <div class="ldx-form">
+                                    <input id="lexAdQText" class="ld-input wide" placeholder="نص السؤال... (سيبه فاضي لو السؤال هيكون بصورة)">
+                                    <div class="wide">
+                                        <input type="file" accept="image/*" hidden id="lexQFile" onchange="lexAdPickImage(this.files[0]); this.value='';">
+                                        <div class="lex-drop" id="lexDrop" tabindex="0">
+                                            <div class="lex-drop-empty" onclick="document.getElementById('lexQFile').click()">🖼️ <b>اضغط لاختيار صورة السؤال</b><br>أو اسحبها هنا، أو الصقها بـ Ctrl+V بعد الضغط على المربع</div>
+                                            <div class="lex-drop-prev">
+                                                <img id="lexDropImg" alt="معاينة"><small id="lexDropInfo"></small>
+                                                <button type="button" class="ld-btn ld-danger" onclick="lexAdClearImage()">✕ إزالة الصورة</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="lexQUrl" class="ld-input wide" dir="ltr" placeholder="أو رابط صورة مباشر (اختياري) — https://...">
+                                    <input id="lexQo0" class="ld-input" placeholder="الاختيار الأول (أ)">
+                                    <input id="lexQo1" class="ld-input" placeholder="الاختيار الثاني (ب)">
+                                    <input id="lexQo2" class="ld-input" placeholder="الاختيار الثالث (ج)">
+                                    <input id="lexQo3" class="ld-input" placeholder="الاختيار الرابع (د)">
+                                    <select id="lexQCorrect" class="ld-input wide">
+                                        <option value="0">الإجابة الصحيحة: أ</option><option value="1">الإجابة الصحيحة: ب</option>
+                                        <option value="2">الإجابة الصحيحة: ج</option><option value="3">الإجابة الصحيحة: د</option>
+                                    </select>
+                                    <button class="ld-btn ld-primary wide" style="padding:.65rem" onclick="lexAdAddQuestion()">➕ إضافة السؤال</button>
+                                </div>
+                            </div>
+
+                            <div class="ldx-panel" style="margin-top:1rem">
+                                <h3>📋 إضافة أسئلة دفعة واحدة</h3>
+                                <div class="lex-bulk-hint">الصيغة المطلوبة لكل سؤال (افصل بين الأسئلة بسطر فاضي):
+
+سؤال : نص السؤال هنا
+اختيار ١ : الاختيار الأول
+اختيار ٢ : الاختيار الثاني
+اختيار ٣ : الاختيار الثالث
+اختيار ٤ : الاختيار الرابع
+الاجابة الصحيحة هي ٣</div>
+                                <textarea id="lexBulkText" class="ld-input" style="width:100%;min-height:150px;resize:vertical" placeholder="الصق هنا كل الأسئلة دفعة واحدة..."></textarea>
+                                <button class="ld-btn ld-primary" style="margin-top:.6rem;padding:.65rem 1.2rem" onclick="lexAdBulkAdd()">➕ إضافة كل الأسئلة</button>
+                                <div class="lex-bulk-res" id="lexBulkRes"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Exam results (درجات الطلاب) -->
+                    <section class="ldx-sec" id="ldxSec-examresults">
+                        <div class="ldx-tools">
+                            <select id="lexResFilter" class="ld-input" style="flex:0 1 240px" onchange="lexAdRenderResults()" aria-label="فلترة حسب الاختبار"></select>
+                            <select id="lexResSort" class="ld-input" style="flex:0 1 190px" onchange="lexAdRenderResults()" aria-label="ترتيب">
+                                <option value="time">🕒 ترتيب حسب الوقت</option>
+                                <option value="name">🔤 ترتيب حسب الاسم</option>
+                                <option value="score">🏅 ترتيب حسب الدرجة</option>
+                            </select>
+                            <button class="ld-btn" id="lexResDir" onclick="lexAdToggleDir()">⬇️ تنازلي</button>
+                            <button class="ld-btn" onclick="lexAdCopyResults()">📋 نسخ الدرجات</button>
+                            <button class="ld-btn" onclick="lexAdExportResults()">⬇ تصدير CSV</button>
+                        </div>
+                        <div class="ld-count" id="lexResCount">جاري التحميل...</div>
+                        <div id="lexAdResults"></div>
                     </section>
 
                     <!-- Activity -->
@@ -9811,6 +10177,8 @@
             overview: ['نظرة عامة', 'ملخص سريع لكل حاجة في المنصة'],
             students: ['الطلبة', 'إدارة الحسابات والنقاط والمكافآت'],
             videos:   ['الفيديوهات والمحتوى', 'إضافة وتعديل وتنظيم الفيديوهات وأكواد الفتح'],
+            exams:    ['الامتحانات', 'إضافة وتنظيم الاختبارات وأسئلتها'],
+            examresults: ['درجات الطلاب', 'نتائج كل الاختبارات اللي الطلاب أدّوها'],
             activity: ['نشاط الطلبة', 'مين بيتفاعل أكتر وإزاي المستويات موزعة'],
             settings: ['الإعدادات', 'الحساب والمشرفين وأدوات البيانات']
         };
@@ -9826,6 +10194,7 @@
             if (sec === 'videos') renderVideosAdmin();
             if (sec === 'settings') loadAdminsList();
             if (sec === 'overview') renderOverview();
+            if (window.lexAdminOpen) window.lexAdminOpen(sec);
         };
 
         window.openLeaderAdmin = function() {
@@ -10177,6 +10546,706 @@
         };
     })();
     </script>
+
+    <!-- ===== EXAMS & GRADES (الامتحانات والدرجات + لوحة إدارة الاختبارات) — Firestore ===== -->
+    <script>
+    (function() {
+        'use strict';
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+        const FV = firebase.firestore.FieldValue;
+        const $ = id => document.getElementById(id);
+        const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+        const GRADES = [
+            { n: '١', name: 'أولى إعدادي',  sub: 'الصف الأول الإعدادي' },
+            { n: '٢', name: 'تانية إعدادي', sub: 'الصف الثاني الإعدادي' },
+            { n: '٣', name: 'تالته إعدادي', sub: 'الصف الثالث الإعدادي' },
+            { n: '١', name: 'أولى ثانوي',   sub: 'الصف الأول الثانوي' },
+            { n: '٢', name: 'تانية ثانوي',  sub: 'الصف الثاني الثانوي' },
+            { n: '٣', name: 'تالته ثانوي',  sub: 'الصف الثالث الثانوي' }
+        ];
+        const MAX_ATTEMPTS = 2; // محاولتين، لكن الدرجة المسجلة هي الأولى بس
+
+        // ───────────────────────── Helpers ─────────────────────────
+        let toastT;
+        function toast(msg) {
+            const el = $('lexToast'); if (!el) return;
+            el.textContent = msg; el.classList.add('show');
+            clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 2800);
+        }
+        let adToastT;
+        function adToast(msg, kind) {
+            const el = $('ldToast'); if (!el) return toast(msg);
+            el.textContent = msg; el.className = 'ld-toast show ' + (kind || 'ok');
+            clearTimeout(adToastT); adToastT = setTimeout(() => el.classList.remove('show'), 2800);
+        }
+        function openOv(id) { $(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function syncScroll() { if (!document.querySelector('.lex-overlay.open')) document.body.style.overflow = ''; }
+        window.lexClose = function(id) { $(id).classList.remove('open'); syncScroll(); };
+
+        // تحويل رموز LaTeX الشائعة لرموز Unicode
+        const LATEX_MAP = [
+            [/\\not\\subset/g,'⊄'],[/\\not\\supset/g,'⊅'],[/\\not\\in/g,'∉'],[/\\subseteq/g,'⊆'],[/\\supseteq/g,'⊇'],
+            [/\\subset/g,'⊂'],[/\\supset/g,'⊃'],[/\\notin/g,'∉'],[/\\in/g,'∈'],[/\\cup/g,'∪'],[/\\cap/g,'∩'],
+            [/\\emptyset/g,'∅'],[/\\varnothing/g,'∅'],[/\\neq/g,'≠'],[/\\ne\b/g,'≠'],[/\\leq/g,'≤'],[/\\le\b/g,'≤'],
+            [/\\geq/g,'≥'],[/\\ge\b/g,'≥'],[/\\approx/g,'≈'],[/\\equiv/g,'≡'],[/\\times/g,'×'],[/\\div/g,'÷'],
+            [/\\pm/g,'±'],[/\\mp/g,'∓'],[/\\cdot/g,'·'],[/\\forall/g,'∀'],[/\\exists/g,'∃'],[/\\infty/g,'∞'],
+            [/\\rightarrow/g,'→'],[/\\to\b/g,'→'],[/\\leftarrow/g,'←'],[/\\leftrightarrow/g,'↔'],[/\\Rightarrow/g,'⇒'],
+            [/\\Leftrightarrow/g,'⇔'],[/\\alpha/g,'α'],[/\\beta/g,'β'],[/\\gamma/g,'γ'],[/\\theta/g,'θ'],[/\\pi\b/g,'π'],
+            [/\\sigma/g,'σ'],[/\\Delta/g,'Δ'],[/\\lambda/g,'λ'],[/\\%/g,'%'],[/\\ /g,' ']
+        ];
+        function latex(str) {
+            let s = String(str == null ? '' : str);
+            s = s.replace(/\\sqrt\[3\]\{([^{}]+)\}/g, '∛$1').replace(/\\sqrt\{([^{}]+)\}/g, '√$1').replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '$1⁄$2');
+            LATEX_MAP.forEach(([re, rep]) => { s = s.replace(re, rep); });
+            return s.replace(/\\text\{([^{}]*)\}/g, '$1').replace(/[{}]/g, '').replace(/\$/g, '');
+        }
+        const mathHtml = s => esc(latex(s));
+
+        function fmtTime(hhmm) {
+            if (!hhmm) return '';
+            const p = hhmm.split(':'); const h = parseInt(p[0], 10);
+            let h12 = h % 12; if (h12 === 0) h12 = 12;
+            return h12 + ':' + String(p[1] || '00').padStart(2, '0') + ' ' + (h >= 12 ? 'م' : 'ص');
+        }
+        function fmtDate(d) { const p = (d || '').split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : (d || ''); }
+        // none | upcoming | open | ended
+        function sched(e) {
+            if (!e || !e.scheduleEnabled || !e.scheduleDate || !e.scheduleStartTime || !e.scheduleEndTime) return { state: 'none' };
+            const st = new Date(e.scheduleDate + 'T' + e.scheduleStartTime + ':00');
+            const en = new Date(e.scheduleDate + 'T' + e.scheduleEndTime + ':00');
+            if (isNaN(st) || isNaN(en)) return { state: 'none' };
+            const now = new Date();
+            return { state: now < st ? 'upcoming' : (now > en ? 'ended' : 'open') };
+        }
+        const available = e => { const s = sched(e).state; return s === 'none' || s === 'open'; };
+        const pctClass = p => p >= 85 ? 'hi' : (p >= 60 ? 'mid' : 'lo');
+
+        // ───────────────────────── Exams live cache ─────────────────────────
+        let exams = {}, examsUnsub = null, examsReady = false, examsErr = false;
+        function ensureExams() {
+            if (examsUnsub || !auth.currentUser) return;
+            examsErr = false;
+            examsUnsub = db.collection('exams').onSnapshot(snap => {
+                const o = {}; snap.forEach(d => { o[d.id] = d.data(); });
+                exams = o; examsReady = true; examsErr = false; onExamsChanged();
+            }, err => {
+                console.error('exams listener:', err);
+                if (examsUnsub) { examsUnsub(); examsUnsub = null; }
+                examsErr = true; examsReady = true; onExamsChanged();
+            });
+        }
+        const sortedExams = () => Object.entries(exams).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
+        function onExamsChanged() {
+            if ($('lexListPage').classList.contains('open')) renderList();
+            if ($('ldxSec-exams') && $('ldxSec-exams').classList.contains('on')) {
+                if (editId && !exams[editId] && !examsErr) { adToast('الاختبار ده اتحذف', 'err'); lexAdBack(); }
+                else { lexAdRenderList(); if (editId) $('lexEdName').textContent = (exams[editId] || {}).title || ''; }
+            }
+            fillResFilter();
+        }
+
+        // ───────────────────────── Student: pages ─────────────────────────
+        let curGrade = null, cur = null, info = null, wrongList = [], timerIv = null;
+
+        window.lexOpenExams = function() {
+            if (!window.requireLogin(function() { window.lexOpenExams(); })) return;
+            ensureExams();
+            $('lexGradeGrid').innerHTML = GRADES.map((g, i) => `
+                <div class="lex-grade" onclick="lexPickGrade(${i})"><i>${g.n}</i><b>${g.name}</b><small>${g.sub}</small></div>`).join('');
+            openOv('lexGradePage');
+        };
+        window.lexPickGrade = function(i) {
+            curGrade = GRADES[i].name;
+            $('lexListSub').textContent = 'اختر الاختبار — ' + curGrade;
+            lexClose('lexGradePage');
+            openOv('lexListPage');
+            renderList();
+        };
+
+        function renderList() {
+            const box = $('lexListBox');
+            if (examsErr) { box.innerHTML = '<div class="lex-empty">⚠️ تعذر تحميل الاختبارات.<br>جرّب تاني بعد شوية.</div>'; return; }
+            if (!examsReady) { box.innerHTML = '<div class="lex-empty">جاري تحميل الاختبارات...</div>'; return; }
+            const list = sortedExams().filter(([id, e]) => e && e.active !== false && (!e.targetGrade || e.targetGrade === curGrade));
+            if (!list.length) { box.innerHTML = '<div class="lex-empty">لا توجد اختبارات متاحة لـ' + esc(curGrade || '') + ' حالياً<br>تابعنا قريباً إن شاء الله ✨</div>'; return; }
+            box.innerHTML = list.map(([id, e]) => {
+                const s = sched(e); let note = '';
+                if (s.state === 'upcoming') note = `<div class="lex-item-note" style="color:#f0d080">🕒 هيبدأ ${fmtDate(e.scheduleDate)} — الساعة ${fmtTime(e.scheduleStartTime)}</div>`;
+                else if (s.state === 'open') note = `<div class="lex-item-note" style="color:#4ade80">🟢 متاح الآن حتى الساعة ${fmtTime(e.scheduleEndTime)}</div>`;
+                else if (s.state === 'ended') note = `<div class="lex-item-note" style="color:#ff6b6b">⏳ انتهى وقت الاختبار</div>`;
+                return `<div class="lex-item" onclick="lexOpenInfo('${id}')">
+                    <div class="lex-item-ico">📝</div>
+                    <div class="lex-item-info"><div class="lex-item-title" dir="auto">${esc(e.title)}</div><div class="lex-item-desc" dir="auto">${esc(e.description)}</div>${note}</div>
+                    <div class="lex-item-arrow">◀</div></div>`;
+            }).join('');
+        }
+
+        const attKey = id => 'lex_att_' + (auth.currentUser ? auth.currentUser.uid : '') + '_' + id;
+        const getAtt = id => { try { return parseInt(localStorage.getItem(attKey(id)), 10) || 0; } catch (e) { return 0; } };
+        const incAtt = id => { try { localStorage.setItem(attKey(id), String(getAtt(id) + 1)); } catch (e) {} };
+
+        window.lexOpenInfo = async function(id) {
+            const e = exams[id]; const u = auth.currentUser;
+            if (!e) return;
+            if (!u) { window.openAuthModal(); return; }
+            $('lexInfoBody').innerHTML = '<div class="lex-empty">جاري التحميل...</div>';
+            openOv('lexInfoPage');
+            let serverHas = false;
+            try { serverHas = (await db.collection('examResults').doc(id + '_' + u.uid).get()).exists; } catch (err) {}
+            const used = Math.max(getAtt(id), serverHas ? 1 : 0);
+            info = { id, serverHas, used };
+            const qc = e.questionCount || 0, left = Math.max(0, MAX_ATTEMPTS - used);
+            const s = sched(e), blocked = s.state === 'upcoming' || s.state === 'ended';
+            let sn = '';
+            if (s.state === 'upcoming') sn = `<div>🕒 الاختبار هيبدأ يوم ${fmtDate(e.scheduleDate)} الساعة ${fmtTime(e.scheduleStartTime)} وهيفضل متاح لحد ${fmtTime(e.scheduleEndTime)}</div>`;
+            else if (s.state === 'open') sn = `<div>🟢 الاختبار متاح دلوقتي، وهيتقفل تلقائي الساعة ${fmtTime(e.scheduleEndTime)}</div>`;
+            $('lexInfoBody').innerHTML = `
+                <div class="lex-card">
+                    <div class="lex-big">📝</div>
+                    <h3 dir="auto">${esc(e.title)}</h3>
+                    <p class="lex-desc" dir="auto">${esc(e.description)}</p>
+                    <div class="lex-meta">
+                        <div>❓ عدد الأسئلة: <b>${qc}</b></div>
+                        <div>⏱ المدة: <b>${e.durationMinutes || 20} دقيقة</b></div>
+                        <div>✅ اختيار من متعدد</div>
+                        <div>⚠️ الدرجة المسجلة هي درجتك في المحاولة الأولى فقط، أي محاولة تانية لن تُسجل</div>
+                        ${sn}
+                    </div>
+                    ${s.state === 'upcoming' ? `<div class="lex-note">⏳ الاختبار لسه معادوش جاله، هيتفتح يوم ${fmtDate(e.scheduleDate)} الساعة ${fmtTime(e.scheduleStartTime)}.</div>` : ''}
+                    ${s.state === 'ended' ? '<div class="lex-note">✋ انتهى الوقت المحدد لأداء هذا الاختبار.</div>' : ''}
+                    ${(used > 0 && left > 0) ? '<div class="lex-note">ℹ️ ده هيبقى محاولتك التانية والأخيرة. درجة المحاولة الأولى هي اللي محفوظة عند الأستاذ.</div>' : ''}
+                    ${left <= 0 ? '<div class="lex-note">✋ استنفدت عدد المحاولات المتاحة لهذا الاختبار.</div>' : ''}
+                    ${!qc ? '<div class="lex-note">⏳ الأسئلة لسه بتتجهز، تابعنا قريباً.</div>' : ''}
+                    <button class="lex-btn" id="lexStartBtn" ${(!qc || left <= 0 || blocked) ? 'disabled' : ''} onclick="lexStart()">🚀 بدء الاختبار</button>
+                </div>`;
+        };
+
+        // ───────────────────────── Student: taking ─────────────────────────
+        window.lexStart = async function() {
+            if (!info) return;
+            const id = info.id, e = exams[id], u = auth.currentUser;
+            if (!e || !u) return;
+            if (!available(e)) { toast('⏳ الاختبار مش متاح دلوقتي، راجع موعد الاختبار.'); lexOpenInfo(id); return; }
+            const btn = $('lexStartBtn'); if (btn) { btn.disabled = true; btn.textContent = 'جاري التحميل...'; }
+            try {
+                const snap = await db.collection('exams').doc(id).collection('questions').get();
+                const qs = snap.docs.map(d => Object.assign({ id: d.id }, d.data())).sort((a, b) => (a.order || 0) - (b.order || 0));
+                if (!qs.length) { toast('⏳ الأسئلة لسه بتتجهز'); if (btn) { btn.disabled = false; btn.textContent = '🚀 بدء الاختبار'; } return; }
+                let name = u.displayName || '';
+                try { const s = await db.collection('students').doc(u.uid).get(); if (s.exists && s.data().name) name = s.data().name; } catch (er) {}
+                cur = { id, e, qs, answers: {}, idx: 0, name: name || u.email || 'طالب', grade: curGrade || e.targetGrade || '', used: info.used,
+                        endAt: Date.now() + (e.durationMinutes || 20) * 60000 };
+                openOv('lexTakePage');
+                renderQ(); tick();
+                clearInterval(timerIv);
+                timerIv = setInterval(tick, 1000);
+            } catch (err) {
+                console.error(err);
+                toast('⚠️ تعذر تحميل الأسئلة، حاول تاني');
+                if (btn) { btn.disabled = false; btn.textContent = '🚀 بدء الاختبار'; }
+            }
+        };
+        function tick() {
+            if (!cur) return;
+            const left = Math.max(0, Math.round((cur.endAt - Date.now()) / 1000));
+            const el = $('lexTimer');
+            el.textContent = String(Math.floor(left / 60)).padStart(2, '0') + ':' + String(left % 60).padStart(2, '0');
+            el.classList.toggle('low', left <= 60);
+            if (left <= 0) { clearInterval(timerIv); finish(true); }
+        }
+        function renderQ() {
+            const total = cur.qs.length, q = cur.qs[cur.idx];
+            $('lexProgTxt').textContent = 'سؤال ' + (cur.idx + 1) + ' من ' + total;
+            $('lexProgFill').style.width = ((cur.idx + 1) / total * 100) + '%';
+            const iw = $('lexQImgWrap');
+            if (q.imageUrl) { $('lexQImg').src = q.imageUrl; iw.style.display = 'block'; } else { $('lexQImg').removeAttribute('src'); iw.style.display = 'none'; }
+            const t = $('lexQText');
+            if (q.text && q.text.trim()) { t.textContent = latex(q.text); t.style.display = 'block'; } else { t.textContent = ''; t.style.display = 'none'; }
+            const L = ['أ', 'ب', 'ج', 'د'];
+            $('lexOpts').innerHTML = (q.options || []).map((o, i) =>
+                `<div class="lex-opt ${cur.answers[cur.idx] === i ? 'selected' : ''}" onclick="lexSelect(${i})"><span class="lex-opt-l">${L[i] || (i + 1)}</span><span dir="auto">${mathHtml(o)}</span></div>`).join('');
+            $('lexPrev').disabled = cur.idx === 0;
+            const last = cur.idx === total - 1;
+            $('lexNext').style.display = last ? 'none' : 'block';
+            $('lexFinish').style.display = last ? 'block' : 'none';
+            $('lexTakePage').scrollTop = 0;
+        }
+        window.lexSelect = function(i) { cur.answers[cur.idx] = i; renderQ(); };
+        window.lexNext = function() { if (cur.idx < cur.qs.length - 1) { cur.idx++; renderQ(); } };
+        window.lexPrev = function() { if (cur.idx > 0) { cur.idx--; renderQ(); } };
+        window.lexConfirmFinish = function() {
+            const total = cur.qs.length, answered = Object.keys(cur.answers).length;
+            if (!confirm(answered < total ? `لسه في ${total - answered} سؤال من غير إجابة. متأكد عايز تنهي الاختبار؟` : 'متأكد عايز تنهي الاختبار؟')) return;
+            finish(false);
+        };
+
+        function finish(auto) {
+            if (!cur) return;
+            clearInterval(timerIv);
+            const c = cur; let score = 0; wrongList = [];
+            c.qs.forEach((q, i) => {
+                const sel = c.answers[i];
+                if (sel === q.correctIndex) score++;
+                else wrongList.push({ text: q.text || '', imageUrl: q.imageUrl || '', options: q.options || [], selected: typeof sel === 'number' ? sel : null, correct: q.correctIndex });
+            });
+            const total = c.qs.length, pct = total ? Math.round(score / total * 100) : 0;
+            const first = c.used === 0, u = auth.currentUser;
+            if (first && u) {
+                db.collection('examResults').doc(c.id + '_' + u.uid).set({
+                    examId: c.id, examTitle: c.e.title || '', uid: u.uid, name: c.name, email: u.email || '', grade: c.grade,
+                    score, total, percentage: pct, timestamp: Date.now(), date: new Date().toLocaleDateString('ar-EG')
+                }).catch(err => { console.error('save result:', err); toast('⚠️ تعذر حفظ النتيجة عند الأستاذ'); });
+            }
+            incAtt(c.id);
+            lexClose('lexTakePage');
+            $('lexResSub').textContent = c.e.title || '';
+            $('lexResScore').textContent = score + '/' + total;
+            $('lexResPct').textContent = pct + '%';
+            let msg = pct >= 85 ? 'أداء رائع! استمر كده يا بطل 🌟' : (pct >= 60 ? 'كويس جداً، وبشوية مذاكرة هتبقى أحسن 👍' : 'مش نهاية الطريق، ذاكر كويس والأستاذ هيساعدك تتحسن 💪');
+            if (auto) msg = '⏰ انتهى وقت الاختبار تلقائياً. ' + msg;
+            if (!first) msg += ' (ملحوظة: دي محاولتك التانية، والدرجة المسجلة عند الأستاذ هي درجة محاولتك الأولى)';
+            $('lexResMsg').textContent = msg;
+            $('lexReviewBtn').style.display = wrongList.length ? 'block' : 'none';
+            cur = null;
+            openOv('lexResultPage');
+        }
+        window.lexCloseResult = function() {
+            lexClose('lexResultPage'); lexClose('lexInfoPage');
+            if ($('lexListPage').classList.contains('open')) renderList();
+            wrongList = [];
+        };
+        window.lexOpenReview = function() {
+            const L = ['أ', 'ب', 'ج', 'د'];
+            $('lexReviewBox').innerHTML = wrongList.length ? wrongList.map((it, n) => `
+                <div class="lex-rv">
+                    <div class="lex-rv-n">سؤال ${n + 1}</div>
+                    ${it.imageUrl ? `<img src="${esc(it.imageUrl)}" alt="صورة السؤال" style="max-width:100%;max-height:180px;border-radius:8px;margin-bottom:10px;display:block;background:#fff">` : ''}
+                    ${it.text && it.text.trim() ? `<div class="lex-rv-q" dir="auto">${mathHtml(it.text)}</div>` : ''}
+                    ${it.selected === null ? '<div class="lex-tag bad" style="margin:0 0 .5rem">❌ متجاوبتش على السؤال ده</div>' : ''}
+                    ${it.options.map((o, i) => `<div class="lex-rv-o ${i === it.correct ? 'correct' : (i === it.selected ? 'wrong' : '')}">
+                        <span class="lex-opt-l">${L[i] || (i + 1)}</span><span dir="auto">${mathHtml(o)}</span>
+                        ${i === it.correct ? '<span class="lex-tag">✅ الإجابة الصحيحة</span>' : ''}
+                        ${(i === it.selected && i !== it.correct) ? '<span class="lex-tag bad">❌ إجابتك</span>' : ''}</div>`).join('')}
+                </div>`).join('') : '<div class="lex-empty">مفيش أسئلة غلط، تمام كله! 🎉</div>';
+            openOv('lexReviewPage');
+        };
+
+        // ───────────────────────── Student: my grades ─────────────────────────
+        async function loadMyResults() {
+            const u = auth.currentUser; if (!u) return [];
+            const snap = await db.collection('examResults').where('uid', '==', u.uid).get();
+            return snap.docs.map(d => d.data()).sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+        }
+        const rowsHtml = arr => arr.map(r => `
+            <div class="lex-grade-row"><div class="t">${esc(r.examTitle)}<small>${esc(r.date || '')}${r.grade ? ' · ' + esc(r.grade) : ''}</small></div>
+            <span class="lex-pill ${pctClass(r.percentage || 0)}">${r.score}/${r.total} · ${r.percentage}%</span></div>`).join('');
+        window.lexOpenMyGrades = async function() {
+            openOv('lexMyGradesPage');
+            const box = $('lexMyGradesBox'); box.innerHTML = '<div class="lex-empty">جاري التحميل...</div>';
+            try { const a = await loadMyResults(); box.innerHTML = a.length ? rowsHtml(a) : '<div class="lex-empty">لسه ما أديتش أي اختبار 📝</div>'; }
+            catch (err) { console.error(err); box.innerHTML = '<div class="lex-empty">⚠️ تعذر تحميل درجاتك، حاول تاني.</div>'; }
+        };
+        window.lexLoadMyGradesInto = async function(elId) {
+            const box = $(elId); if (!box || !auth.currentUser) return;
+            try { const a = await loadMyResults(); box.innerHTML = a.length ? rowsHtml(a) : '<div style="color:#a9a3c2;font-size:.85rem;">لسه ما أديتش أي اختبار — ادخل على «متابعة الطلاب» وابدأ 📝</div>'; }
+            catch (err) { box.innerHTML = '<div style="color:#a9a3c2;font-size:.85rem;">تعذر تحميل الدرجات</div>'; }
+        };
+        if (typeof window.openMyAccount === 'function') {
+            const orig = window.openMyAccount;
+            window.openMyAccount = function() {
+                const r = orig.apply(this, arguments);
+                try { window.lexLoadMyGradesInto('maExamGrades'); } catch (e) {}
+                return r;
+            };
+        }
+
+        // ───────────────────────── Admin: state ─────────────────────────
+        let editId = null, qUnsub = null, qs = [], pendingImg = null;
+        let results = {}, resUnsub = null, resDir = 'desc', adFilled = false;
+        function needAdmin() { if (!window.isLeaderAdmin) { adToast('الصلاحية للمشرفين فقط', 'err'); return false; } return true; }
+        const failMsg = () => adToast('تعذر الحفظ — راجع قواعد Firestore', 'err');
+
+        window.lexAdminOpen = function(sec) {
+            if (!window.isLeaderAdmin) return;
+            ensureExams();
+            if (!adFilled) fillGradeSelects();
+            if (sec === 'exams') lexAdRenderList();
+            if (sec === 'examresults') { ensureResults(); fillResFilter(); lexAdRenderResults(); }
+        };
+        function fillGradeSelects() {
+            adFilled = true;
+            const opts = GRADES.map(g => `<option value="${g.name}">${g.name}</option>`).join('');
+            $('lexAdFilter').innerHTML = '<option value="">كل الاختبارات</option><option value="__all">🌍 المفتوحة لكل المراحل</option>' + opts;
+            const sel = '<option value="">🌍 كل المراحل (يظهر لكل الطلاب)</option>' + opts;
+            $('lexNewGrade').innerHTML = sel; $('lexEdGrade').innerHTML = sel;
+        }
+
+        // ───────────────────────── Admin: exams list ─────────────────────────
+        window.lexAdToggleNew = function() { const p = $('lexAdNew'); p.style.display = p.style.display === 'none' ? 'block' : 'none'; };
+
+        window.lexAdRenderList = function() {
+            const box = $('lexAdExamList'); if (!box) return;
+            if (examsErr) { box.innerHTML = '<div class="ld-count">⚠️ تعذر تحميل الاختبارات — راجع قواعد Firestore</div>'; return; }
+            if (!examsReady) { box.innerHTML = '<div class="ld-count">جاري التحميل...</div>'; return; }
+            const f = $('lexAdFilter').value;
+            const all = sortedExams();
+            const list = all.filter(([id, e]) => !f || (f === '__all' ? !e.targetGrade : e.targetGrade === f));
+            $('lexAdCount').textContent = list.length + ' اختبار';
+            if (!list.length) { box.innerHTML = '<div class="ldx-panel" style="text-align:center;color:var(--ld-mute)">لا توجد اختبارات مضافة بعد.</div>'; return; }
+            box.innerHTML = list.map(([id, e], i) => {
+                const s = sched(e); let sc = '';
+                if (s.state === 'upcoming') sc = `<span class="ldx-chip">🕒 مجدول ${fmtDate(e.scheduleDate)} (${fmtTime(e.scheduleStartTime)} - ${fmtTime(e.scheduleEndTime)})</span>`;
+                else if (s.state === 'open') sc = `<span class="ldx-chip ok">🟢 متاح الآن حتى ${fmtTime(e.scheduleEndTime)}</span>`;
+                else if (s.state === 'ended') sc = `<span class="ldx-chip bad">⏳ انتهى (${fmtDate(e.scheduleDate)})</span>`;
+                const on = e.active !== false;
+                return `<div class="lex-ad-row ${on ? '' : 'off'}">
+                    <div class="lex-ad-main"><b>📝 ${esc(e.title || 'بدون عنوان')}</b>
+                        <div class="lex-ad-chips">
+                            <span class="ldx-chip">🎓 ${esc(e.targetGrade || 'كل المراحل')}</span>
+                            <span class="ldx-chip">⏱ ${e.durationMinutes || 20} دقيقة</span>
+                            <span class="ldx-chip">❓ ${e.questionCount || 0} سؤال</span>
+                            <span class="ldx-chip ${on ? 'ok' : 'bad'}">${on ? '👁️ ظاهر للطلاب' : '🙈 مخفي'}</span>${sc}
+                        </div></div>
+                    <div class="ldx-acts">
+                        <button class="ld-btn" title="تحريك لأعلى" ${i === 0 ? 'disabled' : ''} onclick="lexAdMove('${id}',-1)">▲</button>
+                        <button class="ld-btn" title="تحريك لأسفل" ${i === list.length - 1 ? 'disabled' : ''} onclick="lexAdMove('${id}',1)">▼</button>
+                        <button class="ld-btn" title="${on ? 'إخفاء' : 'إظهار'}" onclick="lexAdToggleActive('${id}')">${on ? '🙈' : '👁️'}</button>
+                        <button class="ld-btn ld-primary" onclick="lexAdEdit('${id}')">⚙️ إدارة</button>
+                    </div></div>`;
+            }).join('');
+        };
+
+        window.lexAdMove = async function(id, dir) {
+            if (!needAdmin()) return;
+            const f = $('lexAdFilter').value;
+            const list = sortedExams().filter(([i, e]) => !f || (f === '__all' ? !e.targetGrade : e.targetGrade === f));
+            const idx = list.findIndex(x => x[0] === id), j = idx + dir;
+            if (idx < 0 || j < 0 || j >= list.length) return;
+            const a = list[idx], b = list[j];
+            let oa = a[1].order || 0, ob = b[1].order || 0;
+            if (oa === ob) ob += dir;
+            try {
+                const bt = db.batch();
+                bt.update(db.collection('exams').doc(a[0]), { order: ob });
+                bt.update(db.collection('exams').doc(b[0]), { order: oa });
+                await bt.commit();
+            } catch (e) { failMsg(); }
+        };
+        window.lexAdToggleActive = function(id) {
+            if (!needAdmin() || !exams[id]) return;
+            const next = exams[id].active === false;
+            db.collection('exams').doc(id).update({ active: next })
+                .then(() => adToast(next ? '👁️ الاختبار ظاهر للطلاب' : '🙈 الاختبار مخفي عن الطلاب')).catch(failMsg);
+        };
+
+        window.lexAdAddExam = async function() {
+            if (!needAdmin()) return;
+            const title = $('lexNewTitle').value.trim(), desc = $('lexNewDesc').value.trim();
+            const dur = parseInt($('lexNewDur').value, 10) || 20, grade = $('lexNewGrade').value;
+            const se = $('lexNewSched').checked, d = $('lexNewDate').value, f = $('lexNewFrom').value, t = $('lexNewTo').value;
+            if (!title) { adToast('من فضلك اكتب اسم الاختبار', 'err'); return; }
+            if (se && (!d || !f || !t)) { adToast('حدد تاريخ الاختبار ووقت البداية والنهاية', 'err'); return; }
+            if (se && f >= t) { adToast('وقت النهاية لازم يكون بعد وقت البداية', 'err'); return; }
+            try {
+                await db.collection('exams').add({
+                    title, description: desc, durationMinutes: dur, active: true, order: Date.now(), questionCount: 0,
+                    targetGrade: grade, scheduleEnabled: se, scheduleDate: se ? d : '', scheduleStartTime: se ? f : '', scheduleEndTime: se ? t : '',
+                    createdAt: FV.serverTimestamp()
+                });
+                ['lexNewTitle', 'lexNewDesc', 'lexNewDur', 'lexNewDate', 'lexNewFrom', 'lexNewTo'].forEach(i => { $(i).value = ''; });
+                $('lexNewGrade').value = ''; $('lexNewSched').checked = false; $('lexNewSchedBox').style.display = 'none';
+                $('lexAdNew').style.display = 'none';
+                adToast('✅ تمت إضافة الاختبار — دوس «إدارة» لإضافة الأسئلة');
+            } catch (e) { console.error(e); failMsg(); }
+        };
+
+        // ───────────────────────── Admin: exam editor ─────────────────────────
+        window.lexAdEdit = function(id) {
+            const e = exams[id]; if (!e || !needAdmin()) return;
+            editId = id; qs = [];
+            $('lexAdList').style.display = 'none'; $('lexAdEditor').style.display = 'block';
+            $('lexEdName').textContent = e.title || '';
+            $('lexEdTitle').value = e.title || ''; $('lexEdDesc').value = e.description || '';
+            $('lexEdDur').value = e.durationMinutes || 20; $('lexEdGrade').value = e.targetGrade || '';
+            $('lexEdActive').checked = e.active !== false;
+            $('lexEdSched').checked = !!e.scheduleEnabled; $('lexEdSchedBox').style.display = e.scheduleEnabled ? 'grid' : 'none';
+            $('lexEdDate').value = e.scheduleDate || ''; $('lexEdFrom').value = e.scheduleStartTime || ''; $('lexEdTo').value = e.scheduleEndTime || '';
+            lexAdClearImage(); $('lexBulkRes').textContent = ''; $('lexAdQList').innerHTML = '<div class="ld-count">جاري التحميل...</div>';
+            $('ldxBody').scrollTop = 0;
+            if (qUnsub) qUnsub();
+            qUnsub = db.collection('exams').doc(id).collection('questions').onSnapshot(snap => {
+                qs = snap.docs.map(d => Object.assign({ id: d.id }, d.data())).sort((a, b) => (a.order || 0) - (b.order || 0));
+                renderQs();
+            }, err => { console.error(err); $('lexAdQList').innerHTML = '<div class="ld-count">⚠️ تعذر تحميل الأسئلة — راجع قواعد Firestore</div>'; });
+        };
+        window.lexAdBack = function() {
+            if (qUnsub) { qUnsub(); qUnsub = null; }
+            editId = null; qs = [];
+            $('lexAdEditor').style.display = 'none'; $('lexAdList').style.display = 'block';
+            lexAdRenderList();
+        };
+
+        function renderQs() {
+            $('lexQCount').textContent = qs.length + ' سؤال';
+            const L = ['أ', 'ب', 'ج', 'د'];
+            $('lexAdQList').innerHTML = qs.length ? qs.map((q, i) => `
+                <div class="lex-ad-q">
+                    <div class="qa">
+                        <button class="ld-btn" ${i === 0 ? 'disabled' : ''} onclick="lexAdMoveQ('${q.id}',-1)">▲</button>
+                        <button class="ld-btn" ${i === qs.length - 1 ? 'disabled' : ''} onclick="lexAdMoveQ('${q.id}',1)">▼</button>
+                        <button class="ld-btn ld-danger" onclick="lexAdDeleteQ('${q.id}')">🗑</button>
+                    </div>
+                    ${q.imageUrl ? `<img src="${esc(q.imageUrl)}" alt="صورة السؤال">` : ''}
+                    <div class="qt" dir="auto">${i + 1}. ${q.text ? mathHtml(q.text) : '<span style="color:var(--ld-mute)">(سؤال بصورة)</span>'}</div>
+                    <div class="qo">${(q.options || []).map((o, k) => `<div dir="auto" class="${k === q.correctIndex ? 'ok' : ''}">${L[k]}) ${mathHtml(o)}${k === q.correctIndex ? ' ✓' : ''}</div>`).join('')}</div>
+                </div>`).join('') : '<div class="ldx-panel" style="text-align:center;color:var(--ld-mute)">لا توجد أسئلة بعد.</div>';
+        }
+
+        window.lexAdSaveMeta = function() {
+            if (!needAdmin() || !editId) return;
+            const title = $('lexEdTitle').value.trim();
+            if (!title) { adToast('اسم الاختبار مطلوب', 'err'); return; }
+            const se = $('lexEdSched').checked, d = $('lexEdDate').value, f = $('lexEdFrom').value, t = $('lexEdTo').value;
+            if (se && (!d || !f || !t)) { adToast('حدد تاريخ الاختبار ووقت البداية والنهاية', 'err'); return; }
+            if (se && f >= t) { adToast('وقت النهاية لازم يكون بعد وقت البداية', 'err'); return; }
+            db.collection('exams').doc(editId).update({
+                title, description: $('lexEdDesc').value.trim(), durationMinutes: parseInt($('lexEdDur').value, 10) || 20,
+                active: $('lexEdActive').checked, targetGrade: $('lexEdGrade').value,
+                scheduleEnabled: se, scheduleDate: se ? d : '', scheduleStartTime: se ? f : '', scheduleEndTime: se ? t : ''
+            }).then(() => adToast('💾 تم حفظ الإعدادات')).catch(failMsg);
+        };
+
+        window.lexAdDeleteExam = async function() {
+            if (!needAdmin() || !editId) return;
+            if (!confirm('متأكد عايز تحذف الاختبار ده وكل أسئلته؟ (نتائج الطلاب هتفضل محفوظة)')) return;
+            const id = editId;
+            try {
+                const snap = await db.collection('exams').doc(id).collection('questions').get();
+                const docs = snap.docs;
+                for (let i = 0; i < docs.length; i += 400) {
+                    const bt = db.batch(); docs.slice(i, i + 400).forEach(d => bt.delete(d.ref)); await bt.commit();
+                }
+                await db.collection('exams').doc(id).delete();
+                adToast('🗑 تم حذف الاختبار'); lexAdBack();
+            } catch (e) { console.error(e); failMsg(); }
+        };
+
+        // ── Question image (compress → data URL) ──
+        function compress(file) {
+            return new Promise((resolve, reject) => {
+                if (!file || !/^image\//.test(file.type)) return reject(new Error('الملف ده مش صورة'));
+                const url = URL.createObjectURL(file), img = new Image();
+                img.onload = () => {
+                    URL.revokeObjectURL(url);
+                    const MAX = 1400; let w = img.naturalWidth, h = img.naturalHeight;
+                    const k = Math.min(1, MAX / Math.max(w, h)); w = Math.round(w * k); h = Math.round(h * k);
+                    const c = document.createElement('canvas'); c.width = w; c.height = h;
+                    const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, w, h); x.drawImage(img, 0, 0, w, h);
+                    let q = 0.85, out = c.toDataURL('image/jpeg', q);
+                    while (out.length > 380000 && q > 0.45) { q -= 0.1; out = c.toDataURL('image/jpeg', q); }
+                    resolve({ dataUrl: out, w, h, kb: Math.round(out.length * 0.75 / 1024) });
+                };
+                img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('تعذر قراءة الصورة')); };
+                img.src = url;
+            });
+        }
+        window.lexAdPickImage = function(file) {
+            if (!file) return;
+            compress(file).then(r => {
+                pendingImg = r.dataUrl;
+                $('lexDrop').classList.add('has-img'); $('lexDropImg').src = r.dataUrl;
+                $('lexDropInfo').textContent = r.w + '×' + r.h + ' · ' + r.kb + 'KB (اتضغطت تلقائيًا)';
+            }).catch(e => adToast(e.message || 'حصل خطأ في الصورة', 'err'));
+        };
+        window.lexAdClearImage = function() {
+            pendingImg = null; const d = $('lexDrop'); if (d) d.classList.remove('has-img');
+            const im = $('lexDropImg'); if (im) im.removeAttribute('src');
+        };
+        document.addEventListener('paste', function(ev) {
+            if (!ev.target || !ev.target.closest || !ev.target.closest('#lexAdEditor')) return;
+            const items = (ev.clipboardData && ev.clipboardData.items) || [];
+            for (const it of items) if (it.type && it.type.indexOf('image') === 0) { ev.preventDefault(); lexAdPickImage(it.getAsFile()); return; }
+        });
+        ['dragover', 'dragleave', 'drop'].forEach(evt => document.addEventListener(evt, function(ev) {
+            const d = ev.target && ev.target.closest ? ev.target.closest('#lexDrop') : null; if (!d) return;
+            ev.preventDefault(); d.classList.toggle('drag', evt === 'dragover');
+            if (evt === 'drop' && ev.dataTransfer && ev.dataTransfer.files[0]) lexAdPickImage(ev.dataTransfer.files[0]);
+        }));
+
+        window.lexAdAddQuestion = async function() {
+            if (!needAdmin() || !editId) return;
+            const text = $('lexAdQText').value.trim();
+            const imageUrl = pendingImg || $('lexQUrl').value.trim();
+            const opts = [0, 1, 2, 3].map(i => $('lexQo' + i).value.trim());
+            const correctIndex = parseInt($('lexQCorrect').value, 10) || 0;
+            if (!text && !imageUrl) { adToast('اكتب نص السؤال أو حط صورة', 'err'); return; }
+            if (imageUrl && !/^(https?:\/\/|data:image\/)/i.test(imageUrl)) { adToast('رابط الصورة لازم يبدأ بـ http:// أو https://', 'err'); return; }
+            if (opts.some(o => !o)) { adToast('املأ الاختيارات الأربعة', 'err'); return; }
+            const q = { text, options: opts, correctIndex, order: Date.now() };
+            if (imageUrl) q.imageUrl = imageUrl;
+            try {
+                const ref = db.collection('exams').doc(editId), bt = db.batch();
+                bt.set(ref.collection('questions').doc(), q);
+                bt.update(ref, { questionCount: FV.increment(1) });
+                await bt.commit();
+                $('lexAdQText').value = ''; $('lexQUrl').value = ''; [0, 1, 2, 3].forEach(i => { $('lexQo' + i).value = ''; });
+                lexAdClearImage(); adToast('✅ تمت إضافة السؤال');
+            } catch (e) { console.error(e); failMsg(); }
+        };
+        window.lexAdDeleteQ = async function(qid) {
+            if (!needAdmin() || !editId || !confirm('حذف السؤال؟')) return;
+            try {
+                const ref = db.collection('exams').doc(editId), bt = db.batch();
+                bt.delete(ref.collection('questions').doc(qid));
+                bt.update(ref, { questionCount: FV.increment(-1) });
+                await bt.commit();
+            } catch (e) { failMsg(); }
+        };
+        window.lexAdMoveQ = async function(qid, dir) {
+            if (!needAdmin() || !editId) return;
+            const i = qs.findIndex(q => q.id === qid), j = i + dir;
+            if (i < 0 || j < 0 || j >= qs.length) return;
+            let oa = qs[i].order || 0, ob = qs[j].order || 0; if (oa === ob) ob += dir;
+            try {
+                const col = db.collection('exams').doc(editId).collection('questions'), bt = db.batch();
+                bt.update(col.doc(qs[i].id), { order: ob }); bt.update(col.doc(qs[j].id), { order: oa });
+                await bt.commit();
+            } catch (e) { failMsg(); }
+        };
+
+        // ── Bulk add ──
+        function num(str) {
+            if (!str) return NaN;
+            const m = String(str).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).match(/\d+/);
+            return m ? parseInt(m[0], 10) : NaN;
+        }
+        function parseBulk(raw) {
+            const blocks = raw.split(/\n\s*\n+/).map(b => b.trim()).filter(Boolean), out = [], errors = [];
+            blocks.forEach((block, bi) => {
+                let text = null, correct = null; const options = [];
+                block.split('\n').map(l => l.trim()).filter(Boolean).forEach(line => {
+                    let m;
+                    if ((m = line.match(/^(?:ال)?سؤال\s*[:：]\s*(.+)$/))) text = m[1].trim();
+                    else if ((m = line.match(/^(?:ال)?اختيار\s*[١٢٣٤1234]\s*[:：]\s*(.+)$/))) options.push(m[1].trim());
+                    else if ((m = line.match(/^(?:ال)?[اإ]جابة\s+(?:ال)?صحيحة\s+هي\s*[:：]?\s*(.+)$/))) correct = num(m[1]);
+                });
+                if (!text || options.length !== 4 || !correct || correct < 1 || correct > 4) {
+                    errors.push('السؤال رقم ' + (bi + 1) + ': تنسيق غير مكتمل (لازم نص سؤال + 4 اختيارات + رقم إجابة من 1 لـ 4)'); return;
+                }
+                out.push({ text, options, correctIndex: correct - 1 });
+            });
+            return { questions: out, errors };
+        }
+        window.lexAdBulkAdd = async function() {
+            if (!needAdmin() || !editId) return;
+            const res = $('lexBulkRes'), raw = $('lexBulkText').value.trim();
+            if (!raw) { res.className = 'lex-bulk-res err'; res.textContent = '⚠️ اكتب الأسئلة الأول'; return; }
+            const { questions, errors } = parseBulk(raw);
+            if (!questions.length) { res.className = 'lex-bulk-res err'; res.textContent = '❌ مفيش أي سؤال اتقرا صح:\n' + errors.join('\n'); return; }
+            try {
+                const ref = db.collection('exams').doc(editId), base = Date.now();
+                for (let i = 0; i < questions.length; i += 400) {
+                    const chunk = questions.slice(i, i + 400), bt = db.batch();
+                    chunk.forEach((q, k) => bt.set(ref.collection('questions').doc(), { text: q.text, options: q.options, correctIndex: q.correctIndex, order: base + i + k }));
+                    bt.update(ref, { questionCount: FV.increment(chunk.length) });
+                    await bt.commit();
+                }
+                let msg = '✅ تم إضافة ' + questions.length + ' سؤال بنجاح';
+                if (errors.length) msg += '\n⚠️ اتجاهل ' + errors.length + ' بلوك فيه مشكلة:\n' + errors.join('\n');
+                res.className = 'lex-bulk-res ok'; res.textContent = msg; $('lexBulkText').value = '';
+            } catch (e) { console.error(e); res.className = 'lex-bulk-res err'; res.textContent = '❌ حصل خطأ أثناء الحفظ — راجع قواعد Firestore'; }
+        };
+
+        // ───────────────────────── Admin: results ─────────────────────────
+        function ensureResults() {
+            if (resUnsub || !window.isLeaderAdmin) return;
+            resUnsub = db.collection('examResults').onSnapshot(snap => {
+                const o = {}; snap.forEach(d => { o[d.id] = d.data(); }); results = o;
+                if ($('ldxSec-examresults').classList.contains('on')) lexAdRenderResults();
+            }, err => {
+                console.error(err); if (resUnsub) { resUnsub(); resUnsub = null; }
+                $('lexResCount').textContent = '⚠️ تعذر تحميل النتائج — راجع قواعد Firestore';
+            });
+        }
+        function fillResFilter() {
+            const sel = $('lexResFilter'); if (!sel) return;
+            const cur = sel.value;
+            sel.innerHTML = '<option value="">كل الاختبارات</option>' + sortedExams().map(([id, e]) => `<option value="${id}">${esc(e.title || 'بدون عنوان')}</option>`).join('');
+            sel.value = (cur && exams[cur]) ? cur : '';
+        }
+        function filteredResults() {
+            const fid = $('lexResFilter').value, sf = $('lexResSort').value;
+            let a = Object.entries(results); if (fid) a = a.filter(([id, r]) => r.examId === fid);
+            const m = resDir === 'asc' ? 1 : -1;
+            a.sort((x, y) => {
+                const p = x[1], q = y[1]; let c;
+                if (sf === 'name') c = String(p.name || '').localeCompare(String(q.name || ''), 'ar');
+                else if (sf === 'score') c = (p.percentage || 0) - (q.percentage || 0);
+                else c = (p.timestamp || 0) - (q.timestamp || 0);
+                return c * m;
+            });
+            return a;
+        }
+        window.lexAdRenderResults = function() {
+            const box = $('lexAdResults'); if (!box) return;
+            const a = filteredResults();
+            const avg = a.length ? Math.round(a.reduce((s, [id, r]) => s + (r.percentage || 0), 0) / a.length) : 0;
+            $('lexResCount').textContent = a.length + ' نتيجة' + (a.length ? ' · المتوسط ' + avg + '%' : '');
+            box.innerHTML = a.length ? a.map(([id, r]) => `
+                <div class="lex-res-row"><div class="i"><b>${esc(r.name)}</b> — ${esc(r.examTitle)}
+                    <small>${esc(r.grade || '')}${r.email ? ' · ' + esc(r.email) : ''} · ${esc(r.date || '')}</small></div>
+                    <span class="lex-pill ${pctClass(r.percentage || 0)}">${r.score}/${r.total} · ${r.percentage}%</span>
+                    <button class="ld-btn ld-danger" onclick="lexAdDeleteResult('${id}')">🗑</button></div>`).join('')
+                : '<div class="ldx-panel" style="text-align:center;color:var(--ld-mute)">لا توجد نتائج بعد.</div>';
+        };
+        window.lexAdToggleDir = function() {
+            resDir = resDir === 'desc' ? 'asc' : 'desc';
+            $('lexResDir').textContent = resDir === 'desc' ? '⬇️ تنازلي' : '⬆️ تصاعدي';
+            lexAdRenderResults();
+        };
+        window.lexAdCopyResults = function() {
+            const a = filteredResults(); if (!a.length) { adToast('لا توجد نتائج لنسخها', 'err'); return; }
+            const text = a.map(([id, r]) => `${r.name || ''} ${r.score}/${r.total} (${r.percentage}%)`).join('\n');
+            const done = () => adToast('📋 تم نسخ الدرجات');
+            if (navigator.clipboard) navigator.clipboard.writeText(text).then(done).catch(fallback); else fallback();
+            function fallback() { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); done(); }
+        };
+        window.lexAdExportResults = function() {
+            const a = filteredResults(); if (!a.length) { adToast('لا توجد نتائج للتصدير', 'err'); return; }
+            const q = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+            const rows = [['الاسم', 'الإيميل', 'المرحلة', 'الاختبار', 'الدرجة', 'من', 'النسبة %', 'التاريخ'].map(q).join(',')]
+                .concat(a.map(([id, r]) => [r.name, r.email, r.grade, r.examTitle, r.score, r.total, r.percentage, r.date].map(q).join(',')));
+            const blob = new Blob(['\ufeff' + rows.join('\n')], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob), l = document.createElement('a');
+            l.href = url; l.download = 'exam-results.csv'; document.body.appendChild(l); l.click(); document.body.removeChild(l); URL.revokeObjectURL(url);
+        };
+        window.lexAdDeleteResult = function(id) {
+            if (!needAdmin() || !confirm('حذف النتيجة دي؟')) return;
+            db.collection('examResults').doc(id).delete().then(() => adToast('🗑 تم حذف النتيجة')).catch(failMsg);
+        };
+
+        // ───────────────────────── Lifecycle ─────────────────────────
+        auth.onAuthStateChanged(function(user) {
+            if (user) return;
+            if (examsUnsub) { examsUnsub(); examsUnsub = null; }
+            if (resUnsub) { resUnsub(); resUnsub = null; }
+            if (qUnsub) { qUnsub(); qUnsub = null; }
+            exams = {}; results = {}; examsReady = false; examsErr = false; editId = null; cur = null; info = null;
+            clearInterval(timerIv);
+            document.querySelectorAll('.lex-overlay.open').forEach(o => o.classList.remove('open'));
+            syncScroll();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key !== 'Escape') return;
+            for (const id of ['lexReviewPage', 'lexMyGradesPage', 'lexInfoPage', 'lexListPage', 'lexGradePage']) {
+                if ($(id).classList.contains('open')) { lexClose(id); return; }
+            }
+        });
+    })();
+    </script>
+
 
 </body>
 </html>
