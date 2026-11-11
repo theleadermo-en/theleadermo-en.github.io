@@ -1,0 +1,115 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{db}/documents {
+
+    // ==============================
+    // Authentication & Authorization
+    // ==============================
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function verified() {
+      return signedIn()
+        && request.auth.token.email_verified == true;
+    }
+
+    function isAdmin() {
+      return verified()
+        && exists(
+          /databases/$(db)/documents/admins/$(request.auth.token.email.lower())
+        );
+    }
+
+    // ==============================
+    // Admins Collection
+    // ==============================
+
+    match /admins/{email} {
+      // المستخدم الموثّق يستطيع قراءة مستند الأدمن الخاص ببريده فقط
+      allow get: if verified()
+        && email == request.auth.token.email.lower();
+
+      // منع عرض قائمة الأدمن أو تعديلها من التطبيق
+      allow list, write: if false;
+    }
+
+    // ==============================
+    // Students Collection
+    // ==============================
+
+    match /students/{uid} {
+
+      // الطالب يقرأ بياناته، والأدمن يستطيع قراءة الجميع
+      allow read: if signedIn()
+        && (
+          request.auth.uid == uid
+          || isAdmin()
+        );
+
+      // إنشاء حساب طالب خاص بالمستخدم نفسه
+      allow create: if signedIn()
+        && request.auth.uid == uid
+        && request.resource.data.role == 'student';
+
+      // الأدمن يستطيع التعديل، والطالب لا يستطيع تغيير دوره
+      allow update: if isAdmin()
+        || (
+          signedIn()
+          && request.auth.uid == uid
+          && request.resource.data.role == resource.data.role
+        );
+    }
+
+    // ==============================
+    // Exams Collection
+    // ==============================
+
+    match /exams/{examId} {
+
+      // أي مستخدم مسجل دخول يستطيع قراءة الامتحانات
+      allow read: if signedIn();
+
+      // الأدمن فقط يستطيع إنشاء أو تعديل أو حذف الامتحانات
+      allow write: if isAdmin();
+
+      // ==============================
+      // Exam Questions Subcollection
+      // ==============================
+
+      match /questions/{qid} {
+
+        // أي مستخدم مسجل دخول يستطيع قراءة الأسئلة
+        allow read: if signedIn();
+
+        // الأدمن فقط يستطيع إدارة الأسئلة
+        allow write: if isAdmin();
+      }
+    }
+
+    // ==============================
+    // Exam Results Collection
+    // ==============================
+
+    match /examResults/{rid} {
+
+      // الطالب يستطيع إنشاء نتيجته الخاصة فقط
+      // ويجب أن يكون رقم المستند بالشكل examId_uid
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && rid == request.resource.data.examId + '_' + request.auth.uid;
+
+      // الطالب يقرأ نتيجته، والأدمن يستطيع قراءة جميع النتائج
+      allow read: if signedIn()
+        && (
+          resource.data.uid == request.auth.uid
+          || isAdmin()
+        );
+
+      // الأدمن فقط يستطيع حذف النتائج
+      allow delete: if isAdmin();
+    }
+  }
+}
