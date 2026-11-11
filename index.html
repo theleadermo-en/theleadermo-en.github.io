@@ -10088,9 +10088,10 @@
         }
 
         auth.onAuthStateChanged(async function(user) {
-            currentUser = user;
+            // Anonymous exam sessions must not unlock the platform's account-only features.
+            currentUser = user && !user.isAnonymous ? user : null;
             const label = document.getElementById('navAccountLabel');
-            if (user) {
+            if (user && !user.isAnonymous) {
                 await checkAdminStatus(user);
                 await ensureStudentDoc(user, user.displayName || '');
                 if (label) label.textContent = (user.displayName || 'حسابي').split(' ')[0];
@@ -10649,8 +10650,15 @@
         // ───────────────────────── Student: pages ─────────────────────────
         let curGrade = null, cur = null, info = null, wrongList = [], timerIv = null;
 
-        window.lexOpenExams = function() {
-            if (!window.requireLogin(function() { window.lexOpenExams(); })) return;
+        window.lexOpenExams = async function() {
+            // Create a temporary Firebase guest session; visitors do not need to register or sign in.
+            try {
+                if (!auth.currentUser) await auth.signInAnonymously();
+            } catch (err) {
+                console.error('anonymous exam sign-in:', err);
+                toast('⚠️ تعذر فتح الامتحانات حالياً. حاول تاني بعد شوية.');
+                return;
+            }
             ensureExams();
             $('lexGradeGrid').innerHTML = GRADES.map((g, i) => `
                 <div class="lex-grade" onclick="lexPickGrade(${i})"><i>${g.n}</i><b>${g.name}</b><small>${g.sub}</small></div>`).join('');
@@ -10688,8 +10696,7 @@
 
         window.lexOpenInfo = async function(id) {
             const e = exams[id]; const u = auth.currentUser;
-            if (!e) return;
-            if (!u) { window.openAuthModal(); return; }
+            if (!e || !u) return;
             $('lexInfoBody').innerHTML = '<div class="lex-empty">جاري التحميل...</div>';
             openOv('lexInfoPage');
             let serverHas = false;
