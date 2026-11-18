@@ -4500,6 +4500,36 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <style id="nav-compact">
+        /* Compact header: text-only on desktop, 2-column grid menu on phones/tablets */
+        @media (min-width: 901px) {
+            nav { padding: 0.7rem 1.5rem; }
+            nav ul { gap: 1.4rem; }
+            nav a { font-size: 0.95rem; }
+            nav a .nav-icon { display: none; }
+        }
+        @media (max-width: 900px) {
+            nav { padding: 0.6rem 1rem; }
+            .logo svg { width: 32px; height: 32px; }
+            .hamburger { display: flex; }
+            nav ul {
+                display: none; position: absolute; top: 100%; right: 0; left: 0; width: 100%;
+                background: rgba(16, 0, 43, 0.98); padding: 0.8rem; gap: 0.5rem;
+                border-top: 1px solid rgba(193, 125, 255, 0.2);
+                border-bottom: 1px solid rgba(193, 125, 255, 0.2);
+            }
+            nav ul.active { display: grid; grid-template-columns: 1fr 1fr; }
+            nav ul a {
+                display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 0.6rem;
+                font-size: 0.9rem; text-align: right; border-radius: 10px;
+                background: rgba(90, 25, 154, 0.18);
+            }
+            nav ul a::after { display: none; }
+            nav ul .nav-icon { width: 28px; height: 28px; border-radius: 8px; }
+            nav ul .nav-icon svg { width: 15px; height: 15px; }
+            nav ul .nav-admin { grid-column: 1 / -1; }
+        }
+    </style>
 </head>
 <body>
     <div id="scroll-progress"></div>
@@ -4583,23 +4613,15 @@
             <span></span>
         </button>
         <ul id="navMenu">
-            <li><a href="#about">
+            <li><a href="#about" data-nav="about">
                 <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
                 من أنا
             </a></li>
-            <li><a href="#courses">
+            <li><a href="#courses" data-nav="courses">
                 <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
                 الكورسات
             </a></li>
-            <li><a href="#testimonials">
-                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-                آراء الطلاب
-            </a></li>
-            <li><a href="#tracking">
-                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20V13"/><path d="M4 20h16"/></svg></span>
-                متابعة الطلاب
-            </a></li>
-            <li><a href="#top-students">
+            <li><a href="#top-students" data-nav="top">
                 <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/></svg></span>
                 أوائل المنصة
             </a></li>
@@ -4607,19 +4629,20 @@
                 <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
                 <span id="navAccountLabel">حسابي</span>
             </a></li>
-            <li><a href="#level-test-section">
+            <li><a href="#level-test-section" data-nav="level">
                 <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
                 English Level
             </a></li>
-            <li><a href="#contact">
+            <li><a href="#contact" data-nav="contact">
                 <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
                 التواصل
             </a></li>
-            <li id="navAdminItem" class="nav-admin js-admin-only" style="display:none"><a href="#" onclick="openLeaderAdmin(); return false;">
+            <li id="navAdminItem" class="nav-admin js-admin-only" style="display:none"><a href="#" data-nav="admin" onclick="openLeaderAdmin(); return false;">
                 <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></span>
                 لوحة التحكم
             </a></li>
         </ul>
+        </div>
     </nav>
 
     <!-- HERO SECTION -->
@@ -6920,13 +6943,16 @@
             document.getElementById('langToggle').textContent = t.toggleBtn;
 
             // Nav links
-            const navLinks = document.querySelectorAll('#navMenu a');
-            t.nav.forEach((txt, i) => {
-                if (navLinks[i]) {
-                    const icon = navLinks[i].querySelector('.nav-icon');
-                    navLinks[i].textContent = txt;
-                    if (icon) navLinks[i].prepend(icon);
-                }
+            const NAV_I18N = {
+                ar: { about: 'من أنا', courses: 'الكورسات', top: 'أوائل المنصة', level: 'English Level', contact: 'التواصل', admin: 'لوحة التحكم' },
+                en: { about: 'About', courses: 'Courses', top: 'Top Students', level: 'English Level', contact: 'Contact', admin: 'Dashboard' }
+            };
+            document.querySelectorAll('#navMenu a[data-nav]').forEach(a => {
+                const txt = (NAV_I18N[lang] || NAV_I18N.ar)[a.dataset.nav];
+                if (!txt) return;
+                const icon = a.querySelector('.nav-icon');
+                a.textContent = txt;
+                if (icon) a.prepend(icon);
             });
 
             // Hero
