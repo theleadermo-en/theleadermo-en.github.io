@@ -9949,6 +9949,10 @@
             isAdminUser = false;
             try {
                 if (user && user.email) {
+                    if (!user.emailVerified) {
+                        try { await user.reload(); if (user.emailVerified) await user.getIdToken(true); } catch (re) {}
+                    }
+                    if (!user.emailVerified) { window.isLeaderAdmin = false; applyAdminUI(); return; }
                     const snap = await db.collection('admins').doc(user.email.toLowerCase()).get();
                     isAdminUser = snap.exists;
                 }
@@ -10071,6 +10075,7 @@
                 if (authMode === 'signup') {
                     const cred = await auth.createUserWithEmailAndPassword(email, password);
                     await cred.user.updateProfile({ displayName: name });
+                    try { await cred.user.sendEmailVerification(); } catch (ve) { console.warn('verification email:', ve); }
                     await ensureStudentDoc(cred.user, name);
                 } else {
                     await auth.signInWithEmailAndPassword(email, password);
